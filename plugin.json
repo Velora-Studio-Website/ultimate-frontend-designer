@@ -1,0 +1,19 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ultimate-frontend-designer",
+  "version": "2.0.1",
+  "description": "Image-first website design: content planning, visual systems, assets, frontend implementation and verification.",
+  "author": {
+    "name": "Velora-Studio-Website"
+  },
+  "homepage": "https://github.com/Velora-Studio-Website/ultimate-frontend-designer",
+  "repository": "https://github.com/Velora-Studio-Website/ultimate-frontend-designer",
+  "keywords": [
+    "codex",
+    "chatgpt",
+    "agent-skills",
+    "frontend",
+    "design",
+    "ecommerce"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "ultimate-frontend-designer",
+  "version": "2.0.1",
+  "description": "Image-first website design: content planning, visual systems, assets, frontend implementation and verification.",
+  "author": {
+    "name": "Velora-Studio-Website"
+  },
+  "homepage": "https://github.com/Velora-Studio-Website/ultimate-frontend-designer",
+  "repository": "https://github.com/Velora-Studio-Website/ultimate-frontend-designer",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Ultimate Frontend Designer",
+    "shortDescription": "Plan content, design with images, build and verify.",
+    "longDescription": "Image-first website design with content-completeness checks, four focused references, static and optional video workflows, and honest delivery gates. English and Chinese guides included.",
+    "developerName": "Velora-Studio-Website",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": "Use Ultimate Frontend Designer to plan complete website content, generate the design, and implement it after the Design Gate."
+  }
+}

@@ -1,5 +1,9 @@
 # Ultimate Frontend Designer
 
+<p align="center">
+  <img src="assets/ultimate-designer-logo.svg" alt="Ultimate Designer Skill logo" width="200">
+</p>
+
 **Plan the content. Design with images. Build what was designed. Verify the result.**
 
 [English](README.md) · [简体中文](README.zh-CN.md) · [Quick-start prompts](examples/prompts.md) · [ChatGPT project setup](docs/chatgpt-project.md)

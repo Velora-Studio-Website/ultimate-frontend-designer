@@ -1,5 +1,9 @@
 # Ultimate Frontend Designer
 
+<p align="center">
+  <img src="assets/ultimate-designer-logo.svg" alt="Ultimate Designer Skill 标志" width="200">
+</p>
+
 **先规划完整内容，再用图片设计，然后忠实实现并验证。**
 
 [English](README.md) · [简体中文](README.zh-CN.md) · [示例提示词](examples/prompts.md) · [ChatGPT 项目设置](docs/chatgpt-project.md)

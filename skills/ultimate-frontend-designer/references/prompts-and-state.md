@@ -11,7 +11,7 @@
 - 必须保持的 Visual DNA：品牌、主体身份或产品结构、配色、材质、光线、图像处理与构图逻辑
 - 本次必须包含的真实内容，以及不可编造的业务事实
 - 允许模型自主决定的美学细节
-- 禁止出现的元素、风格或信息
+- 禁止出现的元素、风格或信息：显式排除 AI 设计套路（除非用户明确指定，否则禁止奶油陶土风 #F4F1EA/#D97757、黑底荧光酸性绿 #0B0B0B、紫色迷幻渐变、均质圆角 SaaS 卡片盒、标题单字变色、无意义全大写眉标、虚假 01/02 编号标签、默认 Inter 字体及过度居中排版）
 - 目标设备、画幅、构图与文字安全区，以及素材的实际用途
 
 侧重点按交付物调整：设计板强调规则与组件可读，字体板强调真实语言样例，Logo 强调独立使用与小尺寸辨识，页面稿强调完整信息架构，素材强调与布局适配，关键帧强调前后状态与统一视觉。
@@ -51,6 +51,8 @@ project:
     brand_change: pending
   design_version: 0
   decisions: []                  # 每项标 user_confirmed / delegated_decision / assumption
+  data_visualization: none       # none / embedded_charts / dashboard / architecture_diagram
+  signature_motion: none         # none / react_bits / video_h3 / 3d_scene
   surfaces: []                   # 页面 id、purpose、primary_task、success_condition
   hypotheses: []                 # id、statement、evidence、method、status、result、affected_refs
   scope_changes: []              # 用户明确变更的范围、原请求和未执行项

@@ -10,7 +10,7 @@
 
 A community-built, image-first frontend design skill for **Codex and compatible ChatGPT workflows**. It combines design thinking, brand direction, UI/UX, asset planning and frontend delivery into one staged workflow.
 
-Version **2.0.1** adds a content-completeness check: approving a beautiful reference does not silently approve a short or incomplete website. “Ultimate” is the project name, not a benchmark claim or an OpenAI endorsement.
+Version **4.2.0** brings award-level quality standards, anti-AI slop design principles, mandatory intake alignment, data visualization safety, and a tiered motion system. “Ultimate” is the project name, not a benchmark claim or an OpenAI endorsement.
 
 ## What it helps you create
 

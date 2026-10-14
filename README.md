@@ -10,7 +10,7 @@
 
 A community-built, image-first frontend design skill for **Codex and compatible ChatGPT workflows**. It combines design thinking, brand direction, UI/UX, asset planning and frontend delivery into one staged workflow.
 
-Version **4.2.0** brings award-level quality standards, anti-AI slop design principles, mandatory intake alignment, data visualization safety, and a tiered motion system. “Ultimate” is the project name, not a benchmark claim or an OpenAI endorsement.
+Version **4.3.0** adds adaptive intake, explicit image/API routing, UI-only Animate, optional specialist composition and deterministic package regressions. “Ultimate” is the project name, not a benchmark claim or an OpenAI endorsement.
 
 ## What it helps you create
 
@@ -62,13 +62,13 @@ The package itself is instructions: **no Node.js, Python, API key or paid subscr
 | Capability | When needed | What to provide |
 | --- | --- | --- |
 | Agent that can read skill/reference files | All modes | Codex or a compatible host; readable project files |
-| Image generation and visual inspection | Image-first design | Native image tools, or an available Higgsfield image integration |
+| Image generation and visual inspection | Image-first design | Host-supported native or configured API tools; Higgsfield only by explicit choice |
 | File editing, shell and project runtime | Frontend implementation | A writable workspace and the actual project's dependencies |
 | Browser inspection | Visual and interaction verification | A browser tool accessible to the agent |
-| Higgsfield + `minimax_h3` | Animate only | Working integration, current model availability and authorized budget |
-| Video inspection and transcoding | Animate delivery | Playback/frame inspection and a local encoder such as FFmpeg |
+| Higgsfield + `minimax_h3` | Selected generated video only | Working integration, current model availability and authorized budget |
+| Video inspection and transcoding | Generated-video delivery | Playback/frame inspection and a local encoder such as FFmpeg |
 
-Image routing is native tools → Higgsfield images → blocked image stage. If both image routes are unavailable, the agent may prepare the brief and prompts but must not pretend to have passed image design or start the formal page implementation.
+Explicit tool, provider and exact model override applicable configured defaults, including a user’s gpt-image/API preference. Verify host capabilities and permissions; model lists do not establish image support. No first-model selection, silent provider/model fallback or automatic Higgsfield image fallback. Check only the existence of OPENAI_API_KEY and OPENAI_BASE_URL, never their values; User/Machine fallback is process-only. Runners must honor both variables and preserve the API root without blindly appending /v1; do not change persistent variables or .env files. Inspect ambiguous paid timeouts before resubmission. Image-stage failure blocks dependent work, while independent preparation continues.
 
 Video parameters must be checked against the live tool contract before submission. The reference chapter includes a historical H3 parameter snapshot, not a guarantee of current service availability. No automatic substitution with another video model. Non-Animate requires no H3 integration and still includes image design and normal interactive controls.
 
@@ -79,18 +79,18 @@ Referenced expert skills and Product Design are **optional**, not an installatio
 ```text
 Intake → optional research → brief → design system → brand assets
 → motion decision → page design → static assets
-→ [Animate only: keyframes → video]
+→ [Selected generated video only: keyframes → video]
 → Design Gate → implementation → verification → delivery
 ```
 
 | Mode | Includes | Does not imply |
 | --- | --- | --- |
 | Non-Animate | Complete image-based design, independent still assets, responsive frontend, usable controls | Decorative motion, autoplay or video generation |
-| Animate | Static foundation, 4–10 related keyframes, authorized H3 video, poster and static/reduced-motion fallback | Unlimited spend or permission to switch models |
+| Animate | Static foundation and selected UI motion/3D; only selected video adds 4–10 independent keyframes and authorized H3 master/web/poster/static | Video authorization, unlimited spend or model substitution |
 | Design only | Agreed design and asset deliverables | Code, checkout or deployment completion |
 | Local fix | Only affected stages | A new brand system or unrelated refactor |
 
-The original phase sequence is preserved. Content planning happens inside the existing brief/page-design phases; it is not an extra mandatory approval loop.
+Intake internally checks task/CTA, scope/devices, real content/brand, direction and motion/assets. Reuse supplied answers and delegated decisions; bundle only material gaps. Retain requested review and applicable naming gates. UI-only Animate marks keyframes/video not_applicable with reasons; do not silently remove previously selected video scope. The original phase sequence is preserved. Content planning happens inside the existing brief/page-design phases; it is not an extra mandatory approval loop.
 
 ## Content completeness before pictures
 
@@ -109,13 +109,13 @@ For long pages, generate an overall view plus readable sectional designs. A sing
 
 ## Two quality gates
 
-**Design Gate:** brief and content coverage, a real generated visual system, design tokens, usable typography/brand assets, complete page designs, independent assets and target-device compositions. Animate adds reviewed keyframes/video and fallbacks. File existence alone does not establish quality or user approval.
+**Design Gate:** brief and content coverage, a real generated visual system, design tokens, usable typography/brand assets, complete page designs, independent assets and target-device compositions. Selected generated video adds reviewed keyframes/video and four delivery forms; UI-only Animate checks UI states and fallbacks without H3. File existence alone does not establish quality or user approval.
 
-**Build Gate:** appropriate project checks plus actual browser inspection, comparison with the design, responsive layout, task paths, keyboard/focus behavior and media failures. Report unavailable checks. A successful build does not prove visual accuracy, and a static mockup does not prove usability or conversion.
+**Build Gate:** appropriate project checks plus actual browser inspection, comparison with the design, responsive layout, task paths, keyboard/focus behavior and media failures. Report unavailable checks; unresolved mandatory checks prevent full acceptance. A successful build does not prove visual accuracy, and a static mockup does not prove usability or conversion.
 
 ## Typical deliverables
 
-`brief.md`, `design-system.md`, `tokens.json`, page designs, standalone assets, `asset-manifest.json`, `project-state.yaml`, and frontend code when requested. Animate additionally includes the agreed video master, web-compressed version, poster and static fallback.
+`brief.md`, `design-system.md`, `tokens.json`, page designs, standalone assets, `asset-manifest.json`, `project-state.yaml`, and frontend code when requested. Only selected generated video additionally includes the agreed video master, web-compressed version, poster and static fallback.
 
 Keep generation status, visual QA and user approval separate. Local prototype, working frontend, connected commerce and deployed site are different delivery states.
 
@@ -145,11 +145,19 @@ scripts/validate.py                 Offline package checks
 
 ## Validation and contributing
 
-Run `python scripts/validate.py` with Python 3.10+ to check the package structure, version consistency, reference links and publication hygiene. Python is for this optional maintainer check, not for using the instructions. These checks do not simulate an agent, generate images or certify compatibility with every host.
+Run the following with Python 3.10+ for package integrity and mutation regressions:
+
+```text
+python -X utf8 scripts/validate.py
+python -X utf8 -m unittest discover -s tests -p "test_*.py" -v
+python -O -X utf8 scripts/validate.py
+```
+
+The stdlib validator checks strict UTF-8/no entrypoint BOM, bounded metadata, semantic versions, aligned manifests, four references, local Markdown targets and distributable text hygiene including Python/YAML/JSON. It scans tracked files plus declared new package files, excluding work/cache; unpacked copies use bounded package directories. Diagnostics do not echo credential values. Python is for this optional maintainer check, not for using the instructions. These checks do not simulate an agent, generate images or certify compatibility with every host.
 
 When reporting an issue, include the host, skill version, requested scope, expected/observed behavior and a redacted reproduction. Improvements should preserve the original workflow, avoid duplicated rules, keep the English/Chinese documentation aligned and add no silent spending or publishing permissions.
 
-Design methodology influences are named in `SKILL.md`; third-party skills are not redistributed. OpenAI, Codex, ChatGPT, Higgsfield and MiniMax names identify their respective products, not sponsorship. This repository publishes the reusable workflow only; private project files and the example product's media are not included.
+See [assessed methods and source limits](docs/design-skill-sources.md). Start with the core plus one targeted specialist; expand only for a concrete need. Known or installed methods do not prove invocation. Third-party skills are not redistributed. OpenAI, Codex, ChatGPT, Higgsfield and MiniMax names identify their respective products, not sponsorship. This repository publishes the reusable workflow only; private project files and the example product's media are not included.
 
 ## License
 

@@ -6,6 +6,26 @@ In clients with a skill picker, select the installed skill first. `$ultimate-fro
 
 支持 Skill 选择器的客户端先选择已安装技能。以下 `$ultimate-frontend-designer` 是 Codex 风格调用；ChatGPT 客户端可能使用自己的选择入口。项目资料模式可改成“使用已上传的 Ultimate Frontend Designer 工作流”。
 
+## Delegated UI-only Animate / 自主决定的 UI 动效
+
+```text
+Use $ultimate-frontend-designer for this app redesign. Keep its stack, brand and
+supplied content. I delegate routine direction and layout choices; bundle only
+material gaps. Animate only panel and task-state transitions, with interruptible
+motion and reduced-motion equivalents. No generated video or 3D is in scope;
+mark keyframes/video not_applicable with reasons. Use my configured image route
+for authorized design work, without silent substitution. Keep the result local
+and inspect the primary keyboard task.
+```
+
+```text
+使用 $ultimate-frontend-designer 改版当前应用，沿用现有栈、品牌与真实资料。
+常规方向与布局由你决定，只合并询问实质缺口。Animate 仅用于面板与任务状态切换，
+支持中断和 reduced-motion 等价反馈。不包含生成视频或 3D，keyframes/video 标
+not_applicable 并写理由。已授权图片设计采用我的配置路线，不静默替换。
+保持本地，验证主要键盘任务。
+```
+
 ## 1. Static ecommerce / 静态电商
 
 ```text

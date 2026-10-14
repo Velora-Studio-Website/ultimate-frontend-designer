@@ -10,7 +10,7 @@
 
 这是一个面向 **Codex 和兼容 ChatGPT 工作环境**的社区 Skill，将设计思维、品牌视觉、UI/UX、素材制作与前端交付放进同一套图片优先流程。
 
-当前版本 **4.2.0** 引入获奖级品质标准、反 AI 模版化设计戒律、强制对齐问卷协议、数据可视化工程规范以及分级动效体系。Ultimate 是项目名称，不代表基准测试结论或 OpenAI 官方背书。
+当前版本 **4.3.0** 引入自适应 intake、明确图片/API 路由、UI-only Animate、可选专家组合、按实际技术栈实施及确定性的包回归检查。Ultimate 是项目名称，不代表基准测试结论或 OpenAI 官方背书。
 
 ## 适合做什么
 
@@ -61,13 +61,13 @@ https://github.com/Velora-Studio-Website/ultimate-frontend-designer/tree/main/sk
 | 能力 | 何时需要 | 需要准备 |
 | --- | --- | --- |
 | 能读取 Skill 与分册的 Agent | 所有模式 | Codex 或兼容环境，以及可读取的项目资料 |
-| 图片生成与视觉检查 | 图片优先设计 | 原生图片工具，或可用的 Higgsfield 图片集成 |
+| 图片生成与视觉检查 | 图片优先设计 | 宿主支持的原生或配置 API；Higgsfield 仅明确选择时 |
 | 文件编辑、终端、项目运行环境 | 前端实现 | 可写工作区及项目真实依赖 |
 | 浏览器检查 | 视觉与交互验收 | Agent 可调用的浏览器工具 |
-| Higgsfield + `minimax_h3` | 仅 Animate | 已连接服务、实时可用模型及费用授权 |
-| 视频检查与转码 | 动画交付 | 播放／抽帧能力及 FFmpeg 等本地编码器 |
+| Higgsfield + `minimax_h3` | 仅已选择生成视频 | 已连接服务、实时可用模型及费用授权 |
+| 视频检查与转码 | 生成视频交付 | 播放／抽帧能力及 FFmpeg 等本地编码器 |
 
-图片路线：原生工具 → Higgsfield 图片能力 → 图片阶段阻塞。两条路线都不可用时，可以整理简报与提示词，但不能宣称图片设计完成，也不能越过设计门开始正式页面实现。
+明确工具、提供方与精确模型覆盖适用配置默认（包括用户的 gpt-image/API 偏好），并核对宿主能力及权限。模型列表不能证明图片支持，不选第一个模型、不静默替换、不自动降级到 Higgsfield。API 只检查 OPENAI_API_KEY 与 OPENAI_BASE_URL 是否存在，不输出值；User/Machine 回退仅注入已授权子进程，不改永久变量或 .env。runner 必须同时使用两者并保留 API 根路径，不盲目追加 /v1。付费超时先查原请求，不重复未知状态请求。图片阶段阻塞时继续独立准备，不越过 Design Gate。
 
 生成视频前必须核对实时参数。分册中的 H3 参数表是历史工具快照，不保证服务当前仍完全相同；不得自动替换视频模型。Non-Animate 不需要 H3，但仍需要图片设计，并保留正常按钮、菜单、切图等交互。
 
@@ -78,18 +78,18 @@ https://github.com/Velora-Studio-Website/ultimate-frontend-designer/tree/main/sk
 ```text
 需求收集 → 可选研究 → 简报 → 设计系统 → 品牌素材
 → 动静选择 → 页面设计 → 静态素材
-→ [仅 Animate：关键帧 → 视频]
+→ [仅已选择生成视频：关键帧 → 视频]
 → Design Gate → 前端实现 → 验证 → 交付
 ```
 
 | 模式 | 包含 | 不代表 |
 | --- | --- | --- |
 | Non-Animate | 完整图片设计、独立静态素材、响应式前端、可用控件 | 装饰性动效、自动播放或视频生成 |
-| Animate | 静态基础、4–10 张关联关键帧、授权 H3 视频、poster、静态与 reduced-motion 回退 | 无限预算或自动换模型 |
+| Animate | 静态基础及所选 UI 动效/3D；仅已选生成视频另需 4–10 独立关键帧和授权 H3 master/web/poster/static | 视频授权、无限预算或自动换模型 |
 | 只要设计 | 约定的设计与素材交付 | 代码、支付或部署已经完成 |
 | 局部修复 | 只处理受影响阶段 | 重做品牌或无关重构 |
 
-内容检查在原有 brief／page_design 阶段内完成，不增加另一套阶段，也不强制增加审批回合。
+Intake 内部检查任务/CTA、范围/设备、真实内容/品牌、方向及动效/素材；复用答案与代选授权，只合并询问实质缺口。保留用户要求的审阅和适用命名门。UI-only Animate 将 keyframes/video 标 not_applicable 并写理由，不静默删除旧视频范围。内容检查在原有 brief／page_design 阶段内完成，不增加另一套阶段，也不强制增加审批回合。
 
 ## 先确保内容完整，再生成页面图
 
@@ -108,13 +108,13 @@ https://github.com/Velora-Studio-Website/ultimate-frontend-designer/tree/main/sk
 
 ## 两道质量门
 
-**Design Gate：** 检查简报及内容覆盖、真实生成的设计系统、tokens、可用字体与品牌素材、完整页面稿、独立素材与设备构图。Animate 另检查关键帧、视频和回退。文件存在不等于质量合格，自检通过不等于用户已批准。
+**Design Gate：** 检查简报及内容覆盖、真实生成的设计系统、tokens、可用字体与品牌素材、完整页面稿、独立素材与设备构图。仅已选生成视频另检查关键帧、视频及四种交付；UI-only Animate 检查 UI 状态与回退，不要求 H3。文件存在不等于质量合格，自检通过不等于用户已批准。
 
-**Build Gate：** 运行适用的项目检查，实际用浏览器对照设计检查布局、响应式、任务路径、键盘焦点和媒体失败。不能执行的检查如实标注；构建成功不等于视觉还原，静态图也不能证明可用性或转化效果。
+**Build Gate：** 运行适用的项目检查，实际用浏览器对照设计检查布局、响应式、任务路径、键盘焦点和媒体失败。不能执行的检查如实标注，必要检查未解决不能称完整验收；构建成功不等于视觉还原，静态图也不能证明可用性或转化效果。
 
 ## 典型交付物
 
-`brief.md`、`design-system.md`、`tokens.json`、页面稿、独立素材、`asset-manifest.json`、`project-state.yaml`，以及用户要求的前端代码。Animate 另交付约定视频母版、网页压缩版、poster 和静态回退。
+`brief.md`、`design-system.md`、`tokens.json`、页面稿、独立素材、`asset-manifest.json`、`project-state.yaml`，以及用户要求的前端代码。仅已选生成视频另交付约定视频母版、网页压缩版、poster 和静态回退。
 
 生成状态、质量检查与用户批准分开记录。本地原型、可用前端、接通交易、已经上线是不同状态。
 
@@ -144,11 +144,19 @@ scripts/validate.py                 离线发布包检查
 
 ## 验证与贡献
 
-维护者可用 Python 3.10+ 运行 `python scripts/validate.py`，检查目录结构、版本、分册链接和发布文件卫生。使用 Skill 指令本身不需要 Python。该检查不模拟 Agent、不生成图片，也不证明所有客户端都兼容。
+维护者可用 Python 3.10+ 运行：
+
+```text
+python -X utf8 scripts/validate.py
+python -X utf8 -m unittest discover -s tests -p "test_*.py" -v
+python -O -X utf8 scripts/validate.py
+```
+
+stdlib 验证器检查严格 UTF-8、入口无 BOM、有界 metadata、语义版本、清单一致、四分册、本地链接和发布文本卫生（含 Python/YAML/JSON）。扫描跟踪文件及声明的新发布文件，排除 work/cache；解压副本使用有限发布目录。诊断不回显凭据值。使用 Skill 指令本身不需要 Python。该检查不模拟 Agent、不生成图片，也不证明所有客户端都兼容。
 
 反馈问题时，请提供环境、Skill 版本、任务范围、预期／实际结果，以及去除敏感信息后的复现步骤。修改应保留原流程、避免重复规则、同步双语文档，并且不增加隐含的花费或发布权限。
 
-方法参考来源列在 `SKILL.md` 中，未分发第三方 Skills 源文件。OpenAI、Codex、ChatGPT、Higgsfield、MiniMax 名称仅用于说明对应产品，不表示合作或背书。本仓库只发布可复用工作流，不包含私人项目文件或示例商品素材。
+[方法来源与证据限制](docs/design-skill-sources.md) 记录互补方法；默认核心加一个针对性专家，有实际缺口才扩展。已知或已安装不等于实际调用。未分发第三方 Skills 源文件。OpenAI、Codex、ChatGPT、Higgsfield、MiniMax 名称仅用于说明对应产品，不表示合作或背书。本仓库只发布可复用工作流，不包含私人项目文件或示例商品素材。
 
 ## 许可
 

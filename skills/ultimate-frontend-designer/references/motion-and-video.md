@@ -1,8 +1,12 @@
 # 关键帧、MiniMax H3 与动画实现
 
-只在 animate 分支使用，对应 `keyframes`、`video` 两个阶段以及实现期的动画部分。
+animate 分支可仅使用 UI motion 或 3D；二者不要求生成视频。只有 generated_video 已选择时才执行 `keyframes`、`video` 和下述 H3 生产契约。只有 generated_video.selected 显式为 false 且记录理由时，两阶段才记 not_applicable，不把已确认的 UI-only 视为缺素材。selected=pending 保持未决，允许独立准备，不按 false 跳过视频阶段或据此进入 prebuild_review；若可能实质改变必要素材，阻止完整 Design Gate 验收通过。selected=true 仍须完成下述 H3 生产要求。
 
-## 关联关键帧
+## UI motion 与 3D
+
+先说明动效帮助哪项任务、响应什么输入、能否中断及静态等价内容。根据现有栈选择 CSS、Motion、GSAP、React Bits 或 3D，不强制引擎、单点数量或滚动视频。保持相同行为一致；避免无目的的每区入场与卡片浮起，状态反馈可重复。预留稳定尺寸，检查键盘/触控替代、资源清理、加载失败和 reduced-motion；快速操作不被演出阻塞。3D 提供可理解的静态/文字替代，限制媒体负载并在目标设备实测。non_animate 保持无装饰动画的即时反馈。
+
+## 关联关键帧（仅生成视频）
 
 保留 4–10 张独立关联关键帧，按场景建立、主体展示、细节变化和收束组织。关键帧数量不等于视频数量，也不固定对应 2–5 段；可复用连续镜头的边界帧。先明确每个节点的表达目的，再依据工具实际输入能力映射到少量足够的镜头。设计系统板、Logo 板和页面稿不计入；多格故事板不能冒充多张独立图片。
 
@@ -51,7 +55,7 @@
 
 按当前约定，每条视频产出四件套：2K 母版、本地压缩 web 版、poster 静帧、静态回退素材。分辨率本身不能证明性能好坏；依据实际体积、时长、编码、设备与加载时机选择 web 版参数，并核查压缩后的视觉质量、时长和播放。默认不依赖声音；视频失败或禁用时仍可理解和操作。没有转码能力就将该交付项标为 blocked，不能把改扩展名当转码。
 
-H3 不可用时保留全部设计成果并标记动画阶段阻塞，不自动更换视频模型，也不擅自把 animate 改成 non-animate。
+所选 H3 不可用时保留全部设计成果并标记依赖它的生成视频阶段阻塞，不自动更换视频模型，也不擅自把 animate 改成 non-animate。
 
 ## 实现与验收
 
@@ -60,10 +64,4 @@ H3 不可用时保留全部设计成果并标记动画阶段阻塞，不自动�
 Build Gate 在通用检查之外另验：视频加载与首屏影响、滚动同步、开启 reduced-motion 后的体验、播放失败回退、移动端表现。
 
 
-### 分级动效体系与 React Bits 定位 (Tiered Motion System)
-
-全站动效划分为清晰的四个层级，各司其职：
-1. 宏观叙事层（animate 分支专属）：MiniMax H3 视频母版、3D 空间运镜与页面滚动叙事。
-2. 标志性组件层（Signature UI Motion）：依托 `react-bits-animation`（本地库 `react-bits`）精心选配的单点互动高光。
-3. 状态微交互层（Micro-interactions）：纯 CSS / Tailwind 实现的即时按压、聚焦、悬停反馈与骨架屏。
-4. 静态模式（non-animate 分支）：完整关闭 1 与 2，保留 3 的即时反馈。
+UI motion、3D 与 generated_video 各自记录选择、理由、触发、回退和检查；通过其中一项不证明其他项通过。UI-only animate 的 Build Gate 检查实际 UI 行为，不要求 H3 可用。生成视频已选择时，仍保留 4–10 独立关键帧、预算与实际结果检查，以及 master/web/poster/static 四种交付，不自动取消原视频范围。

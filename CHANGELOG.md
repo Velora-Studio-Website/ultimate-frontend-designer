@@ -1,5 +1,16 @@
 # Changelog
 
+## 4.3.0
+
+- Replace mandatory intake menus with adaptive completeness checks and delegated decisions; retain requested review and naming gates.
+- Resolve image tool/provider/exact model explicitly, with secret-safe API configuration and no silent fallback or ambiguous paid retry.
+- Separate UI motion, 3D and generated video; retain H3 keyframes, budget, inspection and four delivery forms for selected video.
+- Add subject-specific direction contracts and bounded specialist composition; judge familiar styles contextually.
+- Preserve existing stacks, useful SSR, non-sensitive URL state and mobile analytical tasks; make single-file export conditional on intended-context testing.
+- Add concrete acceptance checks; unresolved mandatory checks prevent full acceptance.
+- Clarify planning/brief/technical-handoff-only requests and matched-state visual comparison without launching unnecessary production stages.
+- Harden offline validation and add disposable-copy mutation regressions. These establish package integrity, not fresh-session behavior or rendered quality.
+
 ## 4.2.0
 
 - Upgrade to award-level quality standards (Awwwards/Webby/FWA reference benchmarks) with an 8-dimension visual and interaction quality review.

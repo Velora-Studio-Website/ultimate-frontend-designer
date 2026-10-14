@@ -128,11 +128,17 @@ quality_review:
 
 ## 工具路由与费用
 
-图片生成严格遵循三级降级梯队，**尽可能优先使用 API，最大限度避免消耗 Higgsfield**：
+图片生成严格遵循三级智能降级梯队，**尽可能优先使用 API，最大限度避免消耗 Higgsfield**：
 1. **第一优先级（系统原生 imagegen）**：每次要生图时，必须首先尝试调用 `imagegen`。
-2. **第二优先级（自定义 API 路由 / gpt-image）**：如果 `imagegen` 无法生成或调用不可用，**直接降级使用 API 生图**（调用 `gpt-image` 或读取环境配置的 `OPENAI_BASE_URL` 与 `OPENAI_API_KEY` 调用模型 API，如 gpt-image-2 / gpt-image-2.5 等）。尽可能通过 API 满足生图需求。
-3. **第三优先级（最后的保底：Higgsfield）**：只有在前两级（imagegen 与自定义 API）均完全不可用时，才考虑启用 Higgsfield 生图能力，避免不必要地消耗 Higgsfield 额度。
-若三级路径均不可用，则完成 brief、文字规范草案与生成提示词并标记素材阻塞，不进入正式页面实现。
+2. **第二优先级（当前环境 API 自动发现）**：如果 `imagegen` 无法生成或调用不可用，**自动识别当前环境配置并调用对应的图片生成模型**：
+   - 读取 `OPENAI_BASE_URL` 与 `OPENAI_API_KEY` 环境变量
+   - 通过 API 的 `/models` 端点或已知能力列表，发现当前可用的图片生成模型（如 OpenAI 环境的 `gpt-image-2` / `gpt-image-2.5`，Gemini 环境的 `nanobanana`，或其他自定义模型）
+   - 优先选择用户明确指定的模型；未指定时按 API 返回的能力自动选择第一个可用的图片生成模型
+   - 使用标准 OpenAI 兼容 SDK 调用 `client.images.generate(model=发现的模型ID, prompt=提示词, ...)` 或 `client.images.edit(...)`
+   - 若存在 `gpt-image` CLI 工具且支持 `--model` 参数，也可使用 CLI 路由：`gpt-image --model <发现的模型ID> -p <提示词> -f <输出路径>`
+   - **核心原则**：不硬编码特定模型名，根据当前 API 环境动态适配
+3. **第三优先级（最后的保底：Higgsfield）**：只有在前两级（imagegen 与当前环境 API）均完全不可用时，才考虑启用 Higgsfield 生图能力，避免不必要地消耗 Higgsfield 额度。
+若三级路径均不可用，则完成 brief、文字规范草案与生成提示词并标记素材阻塞，不进入正式页面实现。环境发现失败或模型不支持图片生成时，如实报告并降级到下一梯队，不伪造调用记录。
 
 视频默认且仅自动选用 Higgsfield 的 MiniMax H3（`minimax_h3`），只在 animate 分支提交。先确认当前工作区、估价与额度，已有正确工作区不重复切换；跨工具传图取得真实可访问引用。保留约定的 2K 母版 + 本地压缩 web 版 + poster + 静态回退交付方式，提交前核对实时契约；若规格不再支持，说明差异并等待有关决定。H3 不可用时只阻塞依赖它的工作，不自动换模型或改成 non-animate；`minimax_h3_max` 也需用户明确授权变更。镜头映射与验证见 [references/motion-and-video.md](references/motion-and-video.md)。
 
@@ -217,6 +223,7 @@ Design Gate 除文件完整性外，检查主要任务是否可理解、信息�
 **duo-dev 自动联动准则**：
 当任务属于代码实现阶段（Design Gate 已通过，进入 implementation）且工作区具备 Git 仓库条件时，代码编写与架构重构**强制使用本地 duo-dev 编排器**：
 - 执行 `duo-dev run "<task description>"`；
+- **统一模型配置**：duo-dev 内部所有角色（Planner、Executor、Reviewer）统一使用当前会话的主模型（通过 `OPENAI_BASE_URL` 与 `OPENAI_API_KEY` 环境变量自动继承），无需单独配置多模型；
 - **全自动执行无需向用户逐步骤提问**：duo-dev 内部的 Planner、Executor、Reviewer 会自动完成架构拆分、代码编写与代码审查，无需在执行循环中中断打扰用户；
 - 若当前目录非 Git 仓库或 duo-dev 前置条件不满足，则无缝降级为当前环境的高标准原生全栈编码，并在执行完成后向用户如实说明工程路径。
 
@@ -247,3 +254,6 @@ Design Gate 除文件完整性外，检查主要任务是否可理解、信息�
 - 动静与设备决策、页面稿、Visual DNA、静态素材：[references/pages-and-assets.md](references/pages-and-assets.md)
 - 关键帧、H3 实参与镜头映射、动画实现与验收：[references/motion-and-video.md](references/motion-and-video.md)
 - 图片与视频提示词契约、状态与素材清单结构、失败恢复：[references/prompts-and-state.md](references/prompts-and-state.md)
+
+
+

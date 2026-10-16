@@ -46,6 +46,26 @@ https://github.com/Velora-Studio-Website/ultimate-frontend-designer/tree/main/sk
 
 也可以下载仓库，将 **整个** `skills/ultimate-frontend-designer/` 文件夹复制到客户端支持的 Skill 目录。当前 Codex 文档列出用户级 `~/.agents/skills/` 与项目级 `.agents/skills/`；内置安装器也可能使用其配置的 `$CODEX_HOME/skills`。不要只复制 `SKILL.md` 而漏掉四个分册。
 
+### 在 Claude Code 中通过 Marketplace 安装
+
+在 Claude Code 中运行：
+
+```text
+/plugin marketplace add Velora-Studio-Website/ultimate-frontend-designer
+/plugin install ultimate-frontend-designer@velora-design
+```
+
+新开会话后输入 `/ultimate-frontend-designer:ultimate-frontend-designer` 使用。
+
+终端安装方式：
+
+```sh
+claude plugin marketplace add Velora-Studio-Website/ultimate-frontend-designer
+claude plugin install ultimate-frontend-designer@velora-design --scope user
+```
+
+Marketplace 复用仓库现有 `skills/`。安装提供工作流和参考文档；图片工具、Higgsfield、duo-dev、凭据和可选专家技能需由宿主另行提供。本仓库是第三方 Marketplace，不代表已上架 Anthropic 官方目录。
+
 ### 在 ChatGPT 中使用
 
 **环境支持原生 Skill／插件时：** 使用该客户端支持的安装入口，然后选择已安装的 Skill。仓库提供标准 `plugin.json` 和 `.codex-plugin/plugin.json` 兼容清单。GitHub 发布不等于自动上架 OpenAI 插件目录；能否安装仍取决于客户端功能、账号和工作区策略。参见 [插件包装说明](https://developers.openai.com/plugins/build/plugins)。

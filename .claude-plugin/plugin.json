@@ -1,0 +1,7 @@
+{
+  "name": "ultimate-frontend-designer",
+  "version": "4.3.0",
+  "description": "Image-first website design, design systems, frontend implementation, and verification.",
+  "author": { "name": "Velora Studio" },
+  "skills": "./skills/"
+}

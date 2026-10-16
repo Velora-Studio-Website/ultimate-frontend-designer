@@ -47,6 +47,26 @@ If the skill does not appear, refresh or restart your client. Ask the installer 
 
 Manual alternative: download this repository and copy the **entire** `skills/ultimate-frontend-designer/` directory into a skill location supported by your client. Current Codex documentation lists `~/.agents/skills/` for user skills and `.agents/skills/` for repository skills; the bundled installer may use its configured `$CODEX_HOME/skills` location. Keep all four reference files beside `SKILL.md`.
 
+### Claude Code: install from the marketplace
+
+In Claude Code, run:
+
+```text
+/plugin marketplace add Velora-Studio-Website/ultimate-frontend-designer
+/plugin install ultimate-frontend-designer@velora-design
+```
+
+Then start a new session and invoke `/ultimate-frontend-designer:ultimate-frontend-designer`.
+
+Shell alternative:
+
+```sh
+claude plugin marketplace add Velora-Studio-Website/ultimate-frontend-designer
+claude plugin install ultimate-frontend-designer@velora-design --scope user
+```
+
+The marketplace uses the existing `skills/` directory. Installation supplies instructions and references; image generation tools, Higgsfield, duo-dev, credentials, and optional expert skills must be available separately. This repository is a third-party marketplace, not a listing in Anthropic's official directory.
+
 ### ChatGPT: choose the supported route
 
 **Native skill/plugin support available:** use your client's supported skill or plugin installation flow, then select the installed skill. This repo includes a portable `plugin.json` and a `.codex-plugin/plugin.json` compatibility manifest. Publishing on GitHub does **not** automatically list it in OpenAI's plugin directory. Client features, account access and workspace policies still apply. See [plugin packaging](https://developers.openai.com/plugins/build/plugins).

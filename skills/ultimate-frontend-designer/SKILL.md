@@ -2,7 +2,7 @@
 name: ultimate-frontend-designer
 description: Design, build, improve and review websites, storefronts and web apps. Use image-first design for new sites and substantial visual redesigns; use scoped workflows for existing-product renovation, interaction states, workspaces, component polish and read-only UI review. Not for business logic without UI changes, standalone media generation or Higgsfield-hosted site builds.
 metadata:
-  version: "4.4.0"
+  version: "4.5.0"
 ---
 
 # Ultimate Frontend Designer Skill
@@ -38,6 +38,41 @@ metadata:
 | 对比页、独立评审与证据检查 | prebuild_review/verification 或只读评审：[评审协议](extensions/ui-craft/references/review-protocol.md)、[工具](extensions/ui-craft/references/tooling.md) |
 
 不新增主阶段或第二套状态；沿用 brief、design-system.md、tokens.json、素材清单与 project-state.yaml。模块内 HTML 对比工具与组件演示不替代图片设计，演示截图不替代产品验收，证据记录校验不等于浏览器实测。模块的方法与上游参考不得降低本文 Design/Build Gate、真实性、授权与工具边界。
+
+## Cult UI 组件注册表
+
+[Cult UI](https://github.com/nolly-studio/cult-ui) 是 shadcn/ui 的开源扩展注册表（@cult-ui 命名空间），提供约 120 个带动画的 React + Tailwind CSS 组件。通过 npx shadcn@latest add @cult-ui/<name> 安装后，源码直接复制到项目 components/ui 目录，使用项目的 shadcn theme tokens，没有运行时依赖。
+
+### 何时使用
+
+在 implementation 阶段，当项目使用 shadcn/ui + Tailwind CSS 技术栈时，Cult UI 组件是实现设计稿的优先选项之一。Design Gate 通过后，按设计稿需求从注册表中选取匹配的组件，适配到项目 tokens 与设计系统。不在 design_system 或 page_design 阶段引入 Cult UI 特有的视觉风格；设计方向由图片模型和设计稿决定，Cult UI 是实现手段而非设计来源。
+
+### 组件分类与选择
+
+| 类别 | 代表组件 | 适用场景 |
+| --- | --- | --- |
+| AI 界面 | prompt-composer, halo-search, ai-blob-warp, code-block, terminal-animation, speech-bubble | AI 产品、agent 界面、代码展示 |
+| 表单控件 | halo-input, halo-field, halo-select, halo-switch, halo-segmented, color-picker | 替代基础 shadcn 表单，带焦点动效与状态反馈 |
+| 卡片 | minimal-card, cutout-card, texture-card, shift-card, folded-card, shadow-card, halo-card, expandable | 产品展示、内容卡片、折叠详情 |
+| 按钮 | family-button, neumorph-button, texture-button, cosmic-button, halo-button, metal-button | 品牌差异化的 CTA 与交互按钮 |
+| 导航与布局 | direction-aware-tabs, halo-tabs, dock, floating-panel, side-panel, family-drawer, expandable-screen | 标签切换、面板、抽屉、停靠栏 |
+| 背景与特效 | hero-dithering, hero-liquid-metal, shader-lens-blur, bg-animated-fractal-grid, texture-overlay, distorted-glass, edge-blur | Hero 区域、视觉氛围层 |
+| 文字动效 | text-animate, typewriter, rolling-number, pixel-heading-character, gradient-heading, lightboard | 标题动画、数字滚动、文字揭示 |
+| 设备模型 | apple-iphone-17-pro, mac-screen, apple-pro-display-xdr, mock-browser-window | 产品截图展示、案例演示 |
+| 工作区 | analytics-chart, kanban-board, collab-avatar, collab-toolbar, timer | SaaS 仪表盘、协作界面 |
+| 营销 | feature-sticky-section, feature-carousel, logo-carousel, tweet-grid, marketing-hero-analytics | Landing page、功能展示、社会证据 |
+| 插画 | gateway-endpoint-illustration, circuit-board, globe, merging-bubbles | 技术概念图、装饰性插画 |
+| 媒体 | hover-video-player, youtube-video-player, three-d-carousel, loading-carousel | 视频播放、轮播展示 |
+
+### 集成规范
+
+1. **源码所有权**：安装后组件源码属于项目，按项目设计系统修改 tokens、颜色、间距与圆角，不保留 Cult UI 的默认暗色或品牌样式。
+2. **最小引入**：只安装设计稿需要的组件，不批量引入整个注册表。每个组件会自动拉入其依赖的 npm 包（如 motion、@base-ui/react）和底层 shadcn 组件。
+3. **动效规范一致**：Cult UI 组件的动画必须遵守本 skill 的 motion_decision 和 reduced-motion 规则。带动画的组件在 non_animate 模式下检查是否有静态等价，必要时关闭或替换装饰性动画。
+4. **不替代图片设计**：Cult UI 的 Hero 组件是代码实现，不能在 Design Gate 前用它们代替图片模型生成的设计稿。
+5. **不强制技术栈**：项目不使用 shadcn/Tailwind 时，不引入 Cult UI；可参考其交互模式，用项目实际技术栈实现等效组件。
+6. **与 React Bits 的关系**：两者都是可选组件来源。同一行为使用一致的组件来源，避免在同一页面混用竞争的动画引擎。选择依据是设计需求和项目已有依赖，不强制二选一。
+7. **验收同标准**：Cult UI 组件的键盘操作、焦点管理、响应式与 ARIA 按 Build Gate 检查，与自写组件同等验收。
 
 ## 阶段序列与两道门
 
@@ -115,9 +150,9 @@ Design Gate 除文件完整性外，检查主要任务是否可理解、信息�
 **原生工程流程**：
 当 Design Gate 已通过并进入实现阶段时，使用当前宿主的 GPT 模型与原生工具完成规划衔接 → 实现 → 审查 → 修复 → 复验。遵守已确认设计、项目约束与权限边界，保留用户修改，不启动外部工程编排器，不因其他模型不可用而阻塞工作。角色分工不代表独立模型或专家。图片生成继续遵守单独的图片路由规则。
 
-逐区把页面映射回设计稿、组件和素材。处理目标设备的布局、裁切、字体与交互，配置合理的图片尺寸、格式与响应式资源，不对关键首屏内容无差别懒加载。
+逐区把页面映射回设计稿、组件和素材。优先从项目已有组件、shadcn/ui 基础组件和 Cult UI 注册表中选取匹配设计稿的现成组件，按设计系统 tokens 适配后集成；没有合适现成组件时再自行实现。处理目标设备的布局、裁切、字体与交互，配置合理的图片尺寸、格式与响应式资源，不对关键首屏内容无差别懒加载。
 
-技术栈、SSR/客户端生命周期、非敏感 URL 状态、移动图表任务和条件性单文件交付均按 [pages-and-assets.md](references/pages-and-assets.md) 执行。可用 CSS、项目已有 Motion/GSAP、React Bits 或 3D 引擎解决具体需要，不强制指定引擎或仅一处组件；重复一致的状态反馈可复用，避免竞争引擎和无关依赖。
+技术栈、SSR/客户端生命周期、非敏感 URL 状态、移动图表任务和条件性单文件交付均按 [pages-and-assets.md](references/pages-and-assets.md) 执行。可用 CSS、项目已有 Motion/GSAP、React Bits、Cult UI 或 3D 引擎解决具体需要，不强制指定引擎或仅一处组件；重复一致的状态反馈可复用，避免竞争引擎和无关依赖。
 
 假登录、模拟提交、未接通的 API 不得说成生产功能；记录哪些真实接通、哪些只是界面演示，敏感凭据留在服务端环境。发现问题回到最近的源头阶段修正并重查受影响内容，只有当前约定范围的必要检查通过后才把 `execution_status` 标为 completed。
 

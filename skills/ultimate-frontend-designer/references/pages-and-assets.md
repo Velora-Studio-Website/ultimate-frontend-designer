@@ -112,3 +112,11 @@ URL 只保存可分享、非敏感的筛选/时间范围等值，验证和限定
 1. 最小源码集成：只拷贝选定组件所需的精简源码，项目实际使用 Tailwind 时才复用其现有配置；否则将组件适配到现有 CSS、tokens 与组件约定，或选择兼容替代，不隐式引入新样式框架，禁止安装冗余三方包。
 2. 防范布局偏移 (CLS)：动画容器必须显式定义 min-height 或骨架占位，避免组件加载或动画执行过程中产生页面跳动。
 3. 减弱动效回退：所有 React Bits 动效必须检测 `prefers-reduced-motion`，在用户开启减弱动效时即时呈现最终静态状态。
+
+### Cult UI 组件集成规范 (Cult UI Registry Integration)
+
+当项目采用 React + Tailwind + shadcn/ui 体系时，可在 implementation 阶段按需引入 `@cult-ui` 组件：
+1. **按需单组件安装**：通过 `npx shadcn@latest add @cult-ui/<component-name>` 引入。禁止整库预装，仅按当前设计稿映射到的具体区块拉取对应源码。
+2. **Tokens 体系归一**：安装后立即检查生成的源码，将硬编码的 Tailwind 颜色或 Cult UI 默认暗色配置重定向至项目现有的 `tokens.json` 语义变量（如 `bg-card`、`text-foreground`、`ring-ring`、圆角半径与字体）。
+3. **无动效与降级支持**：非 animate 模式或用户开启 `prefers-reduced-motion` 时，具有视差、持续流体、粒子背景（如 `bg-animated-fractal-grid`、`hero-liquid-metal`）的组件必须提供静态 CSS/图片等价呈现；文字滚动动效（如 `rolling-number`、`typewriter`）必须立即呈现完整目标文字。
+4. **依赖隔离与防冲突**：Cult UI 会自动引入 `@base-ui/react` 或 `motion`。若项目已有 GSAP 或独立 Framer Motion 版本，注意锁定版本边界，不得引入重复甚至互斥的动效上下文或全屏滚动拦截器。

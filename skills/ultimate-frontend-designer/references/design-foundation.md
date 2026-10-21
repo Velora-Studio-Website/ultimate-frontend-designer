@@ -118,7 +118,9 @@ Logo 展示板不等于可用素材。透明背景、矢量和文件格式必须
 | Taste Skill / `imagegen-frontend-web` | 借鉴 art-direction 机制，不复制其固定布局、数量或 provider |
 | Emil (`emil-design-eng`) | 有目的、可中断且支持减弱动效的界面响应 |
 | Product Design / Figma | 实际有设计源或交接需求且工具可用时才调用 |
+| Cult UI (`@cult-ui/*`) | shadcn/ui 注册表；implementation 阶段按设计稿选取现成动效组件，适配项目 tokens，不作为设计来源 |
 
 拒绝伪造 RNG 执行日志、mandatory GSAP、picsum 占位图片、强制 AIDA、额外审批、固定生成变体、云上传、hooks、telemetry 和竞争状态文件。品牌命名与用户要求的审阅门保留；外来流程不能增加授权。React Bits 仅在栈与任务合适时采用；同一行为重复使用保持一致，不限恰好一处，也不堆叠引擎。
+Cult UI 同理：仅在 shadcn/Tailwind 项目中按需引入，同一交互模式保持一致来源，不与 React Bits 在同一组件上混用动画引擎。
 
 方法来源清单随仓库提供于 `docs/design-skill-sources.md`；独立安装的本 skill 使用本节自包含规则即可。来源已知、技能已安装和工具本轮实际调用必须分别报告。

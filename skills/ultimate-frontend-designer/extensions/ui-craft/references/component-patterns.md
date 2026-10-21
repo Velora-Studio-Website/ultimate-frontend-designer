@@ -34,6 +34,19 @@ Every pattern's container uses the same stable value for `id` and `data-pattern`
 | `paginated-data` | A bounded table split into predictable pages. | Pretending the local fixture models latency or API reliability. | Five records, two per page; disabled boundaries, ready/empty/error selector, Retry resets local fixture. DOM cells use textContent. Table rules. | Contained table and wrapping pager; no page-wide overflow intended. |
 | `confirmation` | A consequential action with explicit scope and a recoverable result. | Routine actions that do not justify an interruption. | Native modal defaults focus to Keep; Escape/cancel restores opener. Confirm archives demo state, focuses Restore; Restore returns focus to trigger. Shared dialog helper + danger rules. | Centered bounded dialog with scrolling and wrapping buttons. |
 
+## Cult UI 常用动效组件选型指引 (Shadcn/Tailwind Stack)
+
+当使用 shadcn/ui 生态开发 React 应用时，可直接对应以下 `@cult-ui` 现成组件作为实现参考：
+
+| 需求场景 | 推荐 Cult UI 组件 | 替代或配合方案 | 核心注意事项 |
+| --- | --- | --- | --- |
+| **AI 交互与指令输入** | `prompt-composer`, `halo-search`, `ai-instructions` | 原生 textarea + command dialog | 保持与后端流式调用解耦，保留纯键盘提交与 Escape 取消 |
+| **动态状态折叠/展开** | `dynamic-island`, `toolbar-expandable`, `morph-surface` | `expandable`, `disclosure-drawer` (Lab) | 状态过渡期间禁用重复触发，保留静态默认态 |
+| **高级折叠/层叠卡片** | `folded-card`, `cutout-card`, `agent-suggest-card-stack` | `list-detail` (Lab) | 避免内部滚动嵌套，移动端转为垂直流式排版 |
+| **指标与工作区仪表盘** | `analytics-chart`, `kanban-board`, `timer` | `kpi-provenance`, `paginated-data` (Lab) | 图表颜色必须继承设计系统 tokens，数据点与标签必须真实 |
+| **代码与终端视觉** | `code-block`, `terminal-animation` | 静态 `<pre><code>` | 代码块高亮样式适配主题，动画终端需提供跳过/直接完成机制 |
+| **背景质感与流体动效** | `hero-dithering`, `hero-liquid-metal`, `texture-overlay` | CSS 渐变 / SVG 噪点 | 仅作为视觉氛围层置于背景底层，不可阻碍正文对比度与交互 |
+
 ## Reachable demo states
 
 All states are attainable without APIs. Toggle focus, radios, expansion, media palette, checklist, billing, comparison, timeline, or tabs directly. Use the delivery and archive buttons to exercise native dialogs and Escape. Add activity repeatedly to observe the five-event bound. Dismiss then Undo the notice. In Favorites, enable “Demo: simulate storage failure” and activate Save/Remove; disable it to retry. In Settings, edit, submit whitespace to exercise trimmed validation, or enable “Demo: simulate save failure” before Save; disable it to retry with the draft retained. Native required/minlength validation may also prevent invalid submission before the JS handler runs. For data, choose Empty or Simulated load error; Retry returns to Ready. A file picker is the only state requiring a user-owned local file; an oversized, empty, or wrong-extension file demonstrates rejection if the OS picker allows overriding the accept filter.

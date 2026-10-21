@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Component field notes · Offline laboratory</title>
+  <link rel="stylesheet" href="component-lab.css">
+  <script src="component-lab.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#patterns">Skip to component patterns</a>
+  <header class="masthead">
+    <p class="eyebrow">FIELD NOTES / INTERFACE SYSTEMS / VOL. 01</p>
+    <h1>Small surfaces.<br><em>Useful decisions.</em></h1>
+    <p class="intro">An offline component laboratory: nineteen patterns, each with a different job.</p>
+    <p class="demo-banner"><strong>Demo data throughout.</strong> Actions are local simulations. No accounts, purchases, uploads, or network requests.</p>
+    <p id="inventory-status" role="status">Initializing pattern inventory…</p>
+    <a class="text-link" href="#effects">Explore the contained effects ↓</a>
+  </header>
+
+  <main id="patterns" tabindex="-1">
+    <div class="section-heading"><h2>The pattern collection</h2><p>01—19 / Try every control</p></div>
+    <div class="lab-grid">
+      <article id="action" data-pattern="action" class="card action-card">
+        <p class="eyebrow">01 / SINGLE ACTION</p><h3>Make room for focus</h3>
+        <p>Turn a vague intention into one small commitment.</p>
+        <button id="focus-start">Start a demo focus session</button>
+        <p id="focus-status" role="status">Ready when you are. No timer runs in the background.</p>
+      </article>
+
+      <article id="selectable" data-pattern="selectable" class="card">
+        <p class="eyebrow">02 / SELECTABLE</p><h3>Choose your working rhythm</h3>
+        <fieldset><legend>Session length</legend><label class="choice"><input type="radio" name="rhythm" value="25" checked> Short sprint <span>25 min</span></label><label class="choice"><input type="radio" name="rhythm" value="50"> Deep work <span>50 min</span></label></fieldset>
+        <p id="rhythm-status" role="status">Selected: 25 minutes.</p>
+      </article>
+
+      <article id="expandable" data-pattern="expandable" class="card">
+        <p class="eyebrow">03 / EXPANDABLE</p><h3>A brief worth reading</h3><p>Design a calmer handoff for a small editorial team.</p>
+        <button class="quiet" id="brief-toggle" aria-expanded="false" aria-controls="brief-more">Read the full brief</button>
+        <div id="brief-more" hidden><p>Success means a clear owner, a visible next step, and enough context to pick up the work tomorrow.</p><ul><li>Keep the latest decision near the task.</li><li>Let the reader disclose the details.</li></ul></div>
+      </article>
+
+      <article id="disclosure-drawer" data-pattern="disclosure-drawer" class="card">
+        <p class="eyebrow">04 / DISCLOSURE DRAWER</p><h3>Delivery notes</h3><p>Keep supporting context one deliberate step away.</p>
+        <button class="quiet" id="drawer-open">Open demo delivery details</button>
+        <dialog id="delivery-drawer" class="drawer" aria-labelledby="drawer-title"><div class="dialog-body"><p class="eyebrow">LOCAL DEMO / DETAILS</p><h2 id="drawer-title">A quiet delivery</h2><p>Sample parcel PN-104 is staged for an imaginary Thursday delivery.</p><dl><dt>Contents</dt><dd>Two paper notebooks</dd><dt>Destination</dt><dd>Demo studio reception</dd></dl><button data-close="delivery-drawer" autofocus>Close delivery details</button></div></dialog>
+      </article>
+
+      <article id="list-detail" data-pattern="list-detail" class="card wide">
+        <p class="eyebrow">05 / LIST → DETAIL</p><h3>Pick up a project</h3>
+        <div class="split"><ul class="project-list" aria-label="Demo projects"><li><button data-project="atlas" aria-pressed="true">Atlas journal <span>Editorial</span></button></li><li><button data-project="tide" aria-pressed="false">Tide index <span>Research</span></button></li><li><button data-project="moss" aria-pressed="false">Moss archive <span>Collection</span></button></li></ul><section class="detail-pane" aria-live="polite" aria-atomic="true"><h4 id="project-title">Atlas journal</h4><p id="project-description">An independent reading journal. Next: review the opening spread.</p><p class="tag" id="project-owner">Owner: Demo editorial team</p></section></div>
+      </article>
+
+      <article id="media" data-pattern="media" class="card media-card">
+        <p class="eyebrow">06 / NATIVE MEDIA</p>
+        <svg id="landscape" class="landscape" viewBox="0 0 400 180" role="img" aria-labelledby="landscape-title"><title id="landscape-title">Original abstract mountain illustration at dawn</title><rect class="sky" width="400" height="180"/><circle class="sun" cx="300" cy="48" r="23"/><path fill="#6c8b7b" d="M0 150 100 46 208 150 290 80 400 160V180H0Z"/><path fill="#284e44" d="m0 175 160-85 130 90 110-54v54H0Z"/></svg>
+        <h3>Somewhere, slowly</h3><p>Original inline SVG. No image download required.</p><button id="landscape-toggle" class="quiet" aria-pressed="false">Show evening palette</button>
+      </article>
+
+      <article id="kpi-provenance" data-pattern="kpi-provenance" class="card metric-card">
+        <p class="eyebrow">07 / KPI + PROVENANCE</p><h3>Reading completion</h3><p class="metric">72<span>%</span></p><p>18 of 25 sample reading sessions finished.</p>
+        <details><summary>Where does this number come from?</summary><p>Fixed fictional dataset: 25 sessions, 18 marked complete. Calculation: 18 ÷ 25 × 100. Illustrative only; no live analytics.</p></details>
+      </article>
+
+      <article id="progress" data-pattern="progress" class="card">
+        <p class="eyebrow">08 / BOUNDED PROGRESS</p><h3>Prepare the release</h3><label for="release-progress">Demo checklist completion</label><progress id="release-progress" value="0" max="3">0 of 3</progress>
+        <fieldset id="release-checks"><legend>Release checklist</legend><label><input type="checkbox"> Review copy</label><label><input type="checkbox"> Check keyboard access</label><label><input type="checkbox"> Package source files</label></fieldset><p id="progress-status" role="status">0 of 3 completed.</p>
+      </article>
+
+      <article id="pricing" data-pattern="pricing" class="card pricing-card">
+        <p class="eyebrow">09 / DEMO PRICING</p><h3>The studio shelf</h3><p class="price"><span id="plan-price">$12</span><small> / month equivalent</small></p>
+        <label class="switch"><input id="annual-plan" type="checkbox"> Annual billing illustration</label><p id="billing-detail">Demo monthly total: $12. No checkout.</p><ul><li>Sample shared library</li><li>Sample editorial workspace</li></ul><button id="plan-preview">Preview demo plan choice</button><p id="plan-status" role="status">Fictional pricing for layout reference.</p>
+      </article>
+
+      <article id="compare" data-pattern="compare" class="card wide">
+        <p class="eyebrow">10 / COMPARISON</p><h3>Choose the right handoff</h3><label><input id="differences-only" type="checkbox"> Show differences only</label>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Workflow comparison, scroll horizontally for all columns"><table><caption>Fictional workflow comparison</caption><thead><tr><th scope="col">Capability</th><th scope="col">Notebook</th><th scope="col">Shared board</th></tr></thead><tbody><tr data-same><th scope="row">Written notes</th><td>Included</td><td>Included</td></tr><tr><th scope="row">Editing</th><td>One person</td><td>Collaborative</td></tr><tr><th scope="row">Best moment</th><td>Private reflection</td><td>Team handoff</td></tr></tbody></table></div><p id="compare-status" role="status">Showing all 3 comparison rows.</p>
+      </article>
+
+      <article id="timeline" data-pattern="timeline" class="card">
+        <p class="eyebrow">11 / TIMELINE</p><h3>From idea to artifact</h3><ol class="timeline"><li><strong>Sketch</strong><span>Shape the smallest useful idea.</span></li><li><strong>Build</strong><span>Make the interactions tangible.</span></li><li id="timeline-review" aria-current="step"><strong>Review · current</strong><span>Inspect the actual artifact.</span></li></ol><button id="timeline-advance" class="quiet">Mark demo review complete</button><p id="timeline-status" role="status">Two of three milestones complete.</p>
+      </article>
+
+      <article id="activity" data-pattern="activity" class="card">
+        <p class="eyebrow">12 / ACTIVITY FEED</p><h3>Small moves, visible</h3><ol id="activity-feed" class="feed"><li><strong>Demo editor</strong> opened the reading list. <small>Sample event 1</small></li><li><strong>Demo reviewer</strong> added a note. <small>Sample event 2</small></li></ol><button id="activity-add" class="quiet">Add sample activity</button><p id="activity-status" role="status">2 sample events. Latest 5 retained.</p>
+      </article>
+
+      <article id="notification" data-pattern="notification" class="card">
+        <p class="eyebrow">13 / DISMISS + UNDO</p><h3>A notice with a way back</h3><div id="notice" class="notice"><p>Your demo reading bundle is ready.</p><button id="notice-dismiss" class="quiet">Dismiss reading notice</button></div><div id="notice-recovery" hidden><p>Notice dismissed.</p><button id="notice-undo" class="quiet">Undo notice dismissal</button></div><p id="notice-status" role="status">Notice visible. Undo has no time limit.</p>
+      </article>
+
+      <article id="upload" data-pattern="upload" class="card">
+        <p class="eyebrow">14 / LOCAL FILE VALIDATION</p><h3>Inspect a small attachment</h3><p id="file-help">Choose one PNG, JPEG, or PDF, up to 2 MiB. Only metadata is checked; the file stays on your device.</p><label for="local-file">Local demo attachment</label><input id="local-file" type="file" accept=".png,.jpg,.jpeg,.pdf,image/png,image/jpeg,application/pdf" aria-describedby="file-help file-status"><p id="file-status" role="status">No file selected.</p><button id="file-clear" class="quiet">Clear local attachment</button>
+      </article>
+
+      <article id="favorites" data-pattern="favorites" class="card">
+        <p class="eyebrow">15 / PERSISTED FAVORITE</p><h3>Keep this reference nearby</h3><p>Save the “Quiet workspace” reference in this browser.</p><button id="favorite-toggle" aria-pressed="false">Save Quiet workspace</button><label class="demo-control"><input id="storage-failure" type="checkbox"> Demo: simulate storage failure</label><p id="favorite-status" role="status">Checking local storage…</p>
+      </article>
+
+      <article id="inline-settings" data-pattern="inline-settings" class="card">
+        <p class="eyebrow">16 / INLINE SETTINGS</p><h3>Name your workspace</h3><p id="workspace-name">Paper studio</p><button id="settings-edit" class="quiet">Edit demo workspace name</button><form id="settings-form" hidden><label for="workspace-input">Workspace name (2–40 characters)</label><input id="workspace-input" minlength="2" maxlength="40" required value="Paper studio" aria-describedby="settings-status"><label class="demo-control"><input id="save-failure" type="checkbox"> Demo: simulate save failure</label><div class="button-row"><button type="submit">Save demo name</button><button type="button" id="settings-cancel" class="quiet">Cancel name edit</button></div></form><p id="settings-status" role="status">Demo only. Changes last until reload.</p>
+      </article>
+
+      <article id="tabs" data-pattern="tabs" class="card">
+        <p class="eyebrow">17 / TABBED CONTEXT</p><h3>One subject, two lenses</h3><div role="tablist" aria-label="Reference context"><button id="tab-overview" role="tab" aria-selected="true" aria-controls="panel-overview">Overview</button><button id="tab-notes" role="tab" aria-selected="false" aria-controls="panel-notes" tabindex="-1">Notes</button></div><section id="panel-overview" role="tabpanel" aria-labelledby="tab-overview" tabindex="0"><h4>Keep context close</h4><p>Tabs work when related views share one subject and neither must be compared side by side.</p></section><section id="panel-notes" role="tabpanel" aria-labelledby="tab-notes" tabindex="0" hidden><h4>Interaction notes</h4><p>Use Left/Right arrows, Home, or End in the tab list. Tab moves into the selected panel.</p></section>
+      </article>
+
+      <article id="paginated-data" data-pattern="paginated-data" class="card wide">
+        <p class="eyebrow">18 / PAGINATED DATA</p><h3>The sample reading shelf</h3><label for="data-state">Demo dataset state</label><select id="data-state"><option value="ready">Ready: five records</option><option value="empty">Empty dataset</option><option value="error">Simulated load error</option></select><div id="data-results"><div class="table-scroll"><table><caption>Fictional reading records · two per page</caption><thead><tr><th scope="col">Title</th><th scope="col">Format</th></tr></thead><tbody id="data-body"></tbody></table></div></div><p id="data-status" role="status"></p><div class="button-row"><button id="data-prev" class="quiet">Previous records</button><button id="data-next" class="quiet">Next records</button><button id="data-retry" hidden>Retry demo loading</button></div>
+      </article>
+
+      <article id="confirmation" data-pattern="confirmation" class="card danger-card">
+        <p class="eyebrow">19 / CONFIRMATION</p><h3>Make the consequence clear</h3><p>Archive a fictional draft after an explicit confirmation. Restore it locally at any time.</p><button id="archive-open" class="danger">Archive demo draft…</button><button id="archive-restore" class="quiet" hidden>Restore demo draft</button><p id="archive-status" role="status">Demo draft is active.</p><dialog id="archive-dialog" aria-labelledby="archive-title" aria-describedby="archive-description"><div class="dialog-body"><h2 id="archive-title">Archive the demo draft?</h2><p id="archive-description">This changes only this page's sample state. No files are deleted.</p><div class="button-row"><button data-close="archive-dialog" class="quiet" autofocus>Keep demo draft</button><button id="archive-confirm" class="danger">Confirm demo archive</button></div></div></dialog>
+      </article>
+    </div>
+
+    <details id="effects" class="effects-foldout"><summary>Contained effects / light trail, dot field, flow gradient</summary><p>Decorative only; this foldout is a container, not a twentieth pattern. Effects stop when closed, paused, or reduced motion is requested.</p><button id="effects-pause" class="quiet" aria-pressed="false">Pause decorative effects</button><div class="effects-grid" aria-hidden="true"><div class="effect light-trail"><span></span><b>LIGHT TRAIL</b></div><div class="effect dot-field"><b>DOT FIELD</b></div><div class="effect flow-gradient"><b>FLOW GRADIENT</b></div></div></details>
+  </main>
+  <footer>Original native visuals · No dependencies · Copy one chosen pattern with its dependencies, then adapt to your existing design tokens.</footer>
+</body>
+</html>

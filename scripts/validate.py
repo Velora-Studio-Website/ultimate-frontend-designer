@@ -13,14 +13,15 @@ NAME = 'ultimate-frontend-designer'
 SKILL_PATH = Path('skills') / NAME
 REFERENCES = {'design-foundation.md', 'pages-and-assets.md',
               'motion-and-video.md', 'prompts-and-state.md'}
-MANIFESTS = ('plugin.json', '.codex-plugin/plugin.json')
+MANIFESTS = ('plugin.json', '.codex-plugin/plugin.json', '.claude-plugin/plugin.json')
 # Explicit additions are included even before the parent stages them.
-DECLARED = ('docs/design-skill-sources.md', 'tests/test_validate.py')
+DECLARED = ('docs/design-skill-sources.md', 'tests/test_validate.py', 'tests/test_ui_craft_review.py',
+            '.claude-plugin/marketplace.json')
 REQUIRED = ('README.md', 'README.zh-CN.md', 'CHANGELOG.md',
             'docs/chatgpt-project.md', 'examples/prompts.md', 'scripts/validate.py',
             'assets/ultimate-designer-logo.svg',
             str(SKILL_PATH / 'agents/openai.yaml'), *MANIFESTS, *DECLARED)
-TEXT_SUFFIXES = {'.md', '.py', '.yaml', '.yml', '.json', '.svg', '.txt',
+TEXT_SUFFIXES = {'.md', '.py', '.yaml', '.yml', '.json', '.svg', '.txt', '.html', '.css', '.mjs',
                  '.toml', '.ini', '.cfg', '.js', '.ts', '.sh', '.ps1'}
 EXCLUDED = {'.git', 'work', '__pycache__', '.pytest_cache', '.mypy_cache',
             'node_modules', 'dist', '.cache'}
@@ -53,6 +54,10 @@ def distributable_files(root: Path) -> list[Path]:
     names: set[str] = {Path(n).as_posix() for n in REQUIRED}
     names.add((SKILL_PATH / 'SKILL.md').as_posix())
     names.update((SKILL_PATH / 'references' / n).as_posix() for n in REFERENCES)
+    # Inspect extension sources even before git add; untracked additions must not
+    # evade path/credential/link hygiene during packaging.
+    names.update(p.relative_to(root).as_posix()
+                 for p in (root / SKILL_PATH / 'extensions').rglob('*') if p.is_file())
     if (root / '.git').exists():
         result = subprocess.run(['git', 'ls-files', '-z'], cwd=root,
                                 capture_output=True, check=False)
@@ -67,7 +72,8 @@ def distributable_files(root: Path) -> list[Path]:
     return [Path(n) for n in sorted(names) if n and not Path(n).is_absolute()
             and '..' not in Path(n).parts
             and not any(part in EXCLUDED for part in Path(n).parts)
-            and Path(n).suffix.lower() in TEXT_SUFFIXES]
+            and (Path(n).suffix.lower() in TEXT_SUFFIXES
+                 or Path(n).name in {'LICENSE', 'NOTICE'})]
 
 
 def parse_string_scalar(value: str) -> str | None:
@@ -231,6 +237,19 @@ def validate_package(root: Path) -> list[Diagnostic]:
             add(name, 'version', 'Manifest version is not semantic versioning')
         elif fields and version != fields['version']:
             add(name, 'version-mismatch', 'Manifest and entrypoint versions differ')
+    marketplace_path = '.claude-plugin/marketplace.json'
+    try:
+        market = json.loads(contents.get(marketplace_path, ''))
+        plugins = market.get('plugins') if isinstance(market, dict) else None
+        if not isinstance(plugins, list):
+            raise ValueError('plugins must be a list')
+        entries = [p for p in plugins if isinstance(p, dict) and p.get('name') == NAME]
+        if len(entries) != 1 or entries[0].get('source') != './':
+            add(marketplace_path, 'marketplace', 'Expected one local root plugin entry')
+        elif fields and entries[0].get('version') != fields['version']:
+            add(marketplace_path, 'version-mismatch', 'Marketplace and entrypoint versions differ')
+    except (ValueError, TypeError):
+        add(marketplace_path, 'marketplace', 'Malformed marketplace')
     refs = root / SKILL_PATH / 'references'
     try:
         actual = {p.name for p in refs.iterdir()} if refs.is_dir() else set()

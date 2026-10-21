@@ -1,5 +1,15 @@
 # Changelog
 
+## 4.4.0
+
+- Embed independently authored UI Craft methods for interaction states, recovery, ten workspace archetypes, three renovation modes, component refinement and evidence-led review.
+- Add nineteen runnable native component patterns and contained decorative effects with local-only demo states and reduced-motion behavior.
+- Vendor public MIT Oil UI comparison/media/capture helpers and required assets; preserve source hashes, MIT notice and font license. No proprietary Pro package, updater or competing discovery entrypoint is included.
+- Add review record tooling with strict JSON parsing, evidence hashes, revision/context fields, guarded exclusions and blocking finding rechecks.
+- Extend scoped renovation, component and read-only review routing while retaining image-first full-site production, original stage identifiers and Design/Build gates.
+- Synchronize the installed native GPT engineering guidance; no external orchestrator requirement.
+- Validation establishes package/tool integrity and the checked laboratory behaviors. Proprietary Pro parity, universal design superiority and fresh-client automatic routing are not established.
+
 ## 4.3.0
 
 - Replace mandatory intake menus with adaptive completeness checks and delegated decisions; retain requested review and naming gates.

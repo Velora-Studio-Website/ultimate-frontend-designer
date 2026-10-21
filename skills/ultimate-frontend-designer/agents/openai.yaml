@@ -1,4 +1,4 @@
 interface:
   display_name: "Ultimate Frontend Designer"
-  short_description: "Plan content, design with images, build and verify."
-  default_prompt: "Use $ultimate-frontend-designer to design a complete website with images before implementing it."
+  short_description: "Image-first sites, UI renovation, components and review."
+  default_prompt: "Use $ultimate-frontend-designer to choose the workflow for this UI task, preserve image-first gates for full sites, and verify actual results."

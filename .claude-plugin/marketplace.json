@@ -6,7 +6,7 @@
     {
       "name": "ultimate-frontend-designer",
       "source": "./",
-      "version": "4.3.0",
+      "version": "4.4.0",
       "description": "Design with generated images first, then implement and verify the frontend."
     }
   ]

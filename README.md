@@ -10,7 +10,9 @@
 
 A community-built, image-first frontend design skill for **Codex and compatible ChatGPT workflows**. It combines design thinking, brand direction, UI/UX, asset planning and frontend delivery into one staged workflow.
 
-Version **4.3.0** adds adaptive intake, explicit image/API routing, UI-only Animate, optional specialist composition and deterministic package regressions. “Ultimate” is the project name, not a benchmark claim or an OpenAI endorsement.
+Version **4.4.0** adds the embedded UI Craft extension: interaction and recovery rules, ten workspace archetypes, three renovation modes, nineteen original offline component patterns, direction comparison tools and content-bound review records. Full-site production retains image-first design and both acceptance gates. “Ultimate” is the project name, not a benchmark claim or an OpenAI endorsement.
+
+The extension independently builds on public MIT Oil UI tools. It is not the proprietary Oil UI Pro and does not claim identical internals or equal outcomes. See [source and license details](skills/ultimate-frontend-designer/extensions/ui-craft/PROVENANCE.md) and the [offline component laboratory](skills/ultimate-frontend-designer/extensions/ui-craft/assets/component-lab.html). Runtime checks of the laboratory and routing probes do not establish production design quality across projects.
 
 ## What it helps you create
 

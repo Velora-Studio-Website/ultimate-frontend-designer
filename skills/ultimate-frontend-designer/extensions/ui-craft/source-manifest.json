@@ -1,0 +1,27 @@
+{
+  "source": "https://github.com/oil-oil/oil-ui",
+  "sourceTree": "feb1f95e8cec48bb8ba35181cb66f94f23b1b6fc",
+  "files": {
+    "vendor/oil-ui/LICENSE": "d44a3ca218007a85d3be41a0b76553d746e42336c7a63c6c6687d2619199c3c4",
+    "vendor/oil-ui/assets/logo.png": "35f58a88e195bf4472e2f0fc795122fb9396464cbb3f0d7a2cb639b6c004f972",
+    "vendor/oil-ui/assets/style-explorer.html": "b15c732957c9937894e8f2fa18141de5825893398593a993c1b3b3a6e798db94",
+    "vendor/oil-ui/assets/fonts/instrument-serif/InstrumentSerif-Regular.ttf": "498efd461f6ddfcb7a111bf9a565709d2085d48201d501ead960d93e84ffbb88",
+    "vendor/oil-ui/assets/fonts/instrument-serif/OFL.txt": "129ed7618959716959f2941fdd5b49e0ad6e6c1d78726761786a00253d865521",
+    "vendor/oil-ui/assets/vendor/alpine.min.js": "1d8911c7b8a55bd0ceb79896251ca00d575915e2cd4348e8007a850e59ba0dc0",
+    "vendor/oil-ui/references/design-direction.md": "8e5262da3a653cd2246063dda3311105aef10eeb3128ba358ac06c2597e0d234",
+    "vendor/oil-ui/references/direction-persuasion.md": "511c30fe1330318a01a401024855b86666a07fcdb92a7c647d9a4a03a3b43690",
+    "vendor/oil-ui/references/layout-and-viewport.md": "f7de8794bddbe5a3ba8896970d80f97d3b5ee65a3420ae01cfac6afc5646990b",
+    "vendor/oil-ui/references/media.md": "76674d782d44412461012a195851c56b47ff1f761095d4646dcc8e5ddb1d71ee",
+    "vendor/oil-ui/references/motion.md": "d4bb6feb692b86812d459534d1f443c500dbc953ee5273db17108067aab91f76",
+    "vendor/oil-ui/references/play.md": "e9a100e93ce4f145ddb93afd34dd0ea22bbffdbc2a83d6eabac685ab0964e264",
+    "vendor/oil-ui/references/reviewer-manual.md": "8bd797f2aa8fa01da20226586646185755dab1f6434ccfc39828f2b96771eead",
+    "vendor/oil-ui/references/scroll-narrative.md": "4e91a56335c44da03693e1d4496f5bcbef4e95ff12d4b62fd9d0680d8d12e3a7",
+    "vendor/oil-ui/references/style-explorer.md": "fb86cb2cae704e94e57626446edea7db14a6df956c99639823bf33fcf016f8f7",
+    "vendor/oil-ui/references/tools.md": "707e5777ddb351c8c547273b899e05240f4121305dc2b5acbfccc6865297e762",
+    "vendor/oil-ui/references/visual-language.md": "225f8a04b1cda046dfed56c91877acf29e7069523aa89fa1c8143ca2fa4c70dd",
+    "vendor/oil-ui/references/visual-review.md": "b4cd68bb6e1bc512d1d9dc6025ee87ff95352e82ffbe1b13aab1c9f60c7e29ec",
+    "vendor/oil-ui/scripts/build_explorer.py": "bb05bef6ffafeeeaf08508d1b4993a6d880bc7a8e22b0d04765e1f616b13ae72",
+    "vendor/oil-ui/scripts/curate-media.mjs": "2bc60a4bd761b7082ac17d0d3e2d4bc1d4630cf763138e9f3bd291d6ceb3bdf4",
+    "vendor/oil-ui/scripts/shoot.mjs": "d7cd33600d63f65ffeed8cc74d115c50df91aaf08804d6ee72fe9bfcfd943944"
+  }
+}

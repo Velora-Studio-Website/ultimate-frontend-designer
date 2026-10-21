@@ -10,7 +10,9 @@
 
 这是一个面向 **Codex 和兼容 ChatGPT 工作环境**的社区 Skill，将设计思维、品牌视觉、UI/UX、素材制作与前端交付放进同一套图片优先流程。
 
-当前版本 **4.3.0** 引入自适应 intake、明确图片/API 路由、UI-only Animate、可选专家组合、按实际技术栈实施及确定性的包回归检查。Ultimate 是项目名称，不代表基准测试结论或 OpenAI 官方背书。
+当前版本 **4.4.0** 内置 UI Craft 增强模块：交互与恢复规则、十种工作区原型、三种改造模式、十九个原创离线组件模式、方向对比工具与绑定文件身份的评审记录。完整建站仍遵守图片优先和两道验收门。Ultimate 是项目名称，不代表基准测试结论或 OpenAI 官方背书。
+
+增强模块基于 MIT Oil UI 公开工具独立扩展，不是付费 Oil UI Pro，不声称内部规则或效果一比一。参见[来源与许可](skills/ultimate-frontend-designer/extensions/ui-craft/PROVENANCE.md)和[离线组件实验室](skills/ultimate-frontend-designer/extensions/ui-craft/assets/component-lab.html)。组件实测与路由评估不等于跨项目设计质量已经得到证明。
 
 ## 适合做什么
 

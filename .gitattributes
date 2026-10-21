@@ -1,0 +1,3 @@
+# Preserve the pinned public source bytes used by source-manifest.json,
+# including Windows checkouts with core.autocrlf enabled.
+/skills/ultimate-frontend-designer/extensions/ui-craft/vendor/** -text

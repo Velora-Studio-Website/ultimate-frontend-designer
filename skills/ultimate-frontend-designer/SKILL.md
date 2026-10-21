@@ -1,13 +1,13 @@
 ---
 name: ultimate-frontend-designer
-description: Design a website with generated images first, then implement it in code. Use when building or substantially redesigning a website, landing page, product page, ecommerce storefront, or web app whose visual direction, brand assets, or imagery must be designed before implementation. Not for small UI fixes, standalone image or video requests, UI review or accessibility audits, or Higgsfield-hosted site builds.
+description: Design, build, improve and review websites, storefronts and web apps. Use image-first design for new sites and substantial visual redesigns; use scoped workflows for existing-product renovation, interaction states, workspaces, component polish and read-only UI review. Not for business logic without UI changes, standalone media generation or Higgsfield-hosted site builds.
 metadata:
-  version: "4.3.0"
+  version: "4.4.0"
 ---
 
 # Ultimate Frontend Designer Skill
 
-先用图片模型把设计做出来并确认，再用代码忠实实现。没有真实图片之前，不写正式产品页面。你同时承担品牌视觉总监、UI/UX 设计师、动效导演和前端工程师的职责，用用户当前语言沟通。
+完整建站或大范围视觉改版，先用图片模型把设计做出来并确认，再用代码忠实实现。没有真实图片之前，不写正式产品页面。已有项目局部修改、组件精修与只读评审按各自入口限制范围。你同时承担品牌视觉总监、UI/UX 设计师、动效导演和前端工程师的职责，用用户当前语言沟通。
 
 ## 先选入口，不要默认走全流程
 
@@ -16,11 +16,28 @@ metadata:
 | 完整建站 | 从零建站或大范围视觉改版 | 走完整阶段序列 |
 | 只要设计 | 用户只要设计稿、品牌或素材 | 走到 Design Gate 交付，implementation 与 verification 标 `not_applicable`，不声称网站已完成 |
 | 局部改动 | 已有站点修某个区块、某张图、某个组件 | 只处理受影响阶段，复用现有技术栈、tokens、组件与素材，不重做品牌与全站页面 |
+| 旧项目改造 | 视觉焕新、流程修复或新增界面功能 | 先按 UI Craft 分清三种模式；大范围视觉重做仍走完整图片设计与两道门，局部改造只处理受影响阶段 |
+| 组件精修 | 卡片、表单、弹窗、折展、工作区局部或特效 | 明确组件输入、状态、容器和复用边界，使用 UI Craft 原创参考；不重开完整建站 |
+| 只读 UI 评审 | 只要界面诊断、状态或可用性建议 | 使用 UI Craft 证据协议，不写产品代码、不启动图片生产，区分视觉、行为与专项无障碍证据 |
 | 不启动 | 写或改 skill、仅交 brief／计划／技术交接、评审方案、改文案、只要一张图或一条视频 | 按当前请求直接交付，不建站点状态、不开生产阶段 |
 
 仅规划或交接的请求可使用相关分册的方法，但不强制图片生产、Design Gate 或 Build Gate；报告文字交付的完成范围，不称为网站设计或实现已完成。后续授权生产时恢复适用阶段和两道门，不能把本轮不适用当作永久豁免。已有生产任务临时只要计划时保留原状态，只记录本轮交付范围。
 
-让路规则：用户要求 Higgsfield 托管建站、或修改既有 Higgsfield 网站时，交给 `higgsfield-websites` 的工具契约，本 skill 不并行执行自己的流程；请求只是 UI/UX 审查、可访问性检查或设计系统提取时，不启动本流程。参考 Higgsfield 的图片工作流不等于使用其托管，也不意味着套用暗色风格或加 Higgsfield 品牌。
+让路规则：用户要求 Higgsfield 托管建站、或修改既有 Higgsfield 网站时，交给 `higgsfield-websites` 的工具契约，本 skill 不并行执行自己的流程；专项可访问性审计或设计系统提取只调用适用方法，不启动建站流程。参考 Higgsfield 的图片工作流不等于使用其托管，也不意味着套用暗色风格或加 Higgsfield 品牌。
+
+## UI Craft 增强模块
+
+内置 [UI Craft 方法与工具](extensions/ui-craft/GUIDE.md)，无需另外安装技能或加载另一份入口。它基于 MIT Oil UI 的公开工具及独立编写的方法，不是官方 Oil UI Pro，不声称付费版 1:1 或普遍优于其他设计技能。来源与许可见 [PROVENANCE.md](extensions/ui-craft/PROVENANCE.md)。只按缺口加载一个对应参考，不预先读完整库。
+
+| 当前任务 | 读取时机与参考 |
+| --- | --- |
+| 定方向、比较设计稿、精修层级 | brief/design_system/page_design：[方向与精修](extensions/ui-craft/references/direction-polish.md) |
+| 表单、异步、空错状态、焦点与手机交互 | page_design 记录状态依据，implementation/verification 落地：[交互状态](extensions/ui-craft/references/interaction-states.md) |
+| 旧项目与后台信息架构 | intake/brief 先确定模式，设计阶段选任务布局：[工作区与改造](extensions/ui-craft/references/workspaces-renovation.md) |
+| 单组件或局部表现 | 设计依据已确认后：[组件模式与离线实验室](extensions/ui-craft/references/component-patterns.md) |
+| 对比页、独立评审与证据检查 | prebuild_review/verification 或只读评审：[评审协议](extensions/ui-craft/references/review-protocol.md)、[工具](extensions/ui-craft/references/tooling.md) |
+
+不新增主阶段或第二套状态；沿用 brief、design-system.md、tokens.json、素材清单与 project-state.yaml。模块内 HTML 对比工具与组件演示不替代图片设计，演示截图不替代产品验收，证据记录校验不等于浏览器实测。模块的方法与上游参考不得降低本文 Design/Build Gate、真实性、授权与工具边界。
 
 ## 阶段序列与两道门
 
@@ -91,19 +108,12 @@ Design Gate 除文件完整性外，检查主要任务是否可理解、信息�
 
 已有项目沿用实际权威设计文件，新项目使用 design-system.md 与 tokens.json。DESIGN.md、MASTER.md、参考站 profile 或 MCP kit 只在采纳后映射回当前规范，不维护多套竞争的规则。某个可选专家工具不可用，只影响该证据来源；不能伪称已运行，也不阻塞其他可执行阶段。
 
-## 前端实现与 duo-dev 自动工程化联动
+## 前端实现与原生工程流程
 
 沿用现有技术栈、组件模式、样式规范与路由；新项目选满足需求的最小合理方案，不无故迁移框架或加依赖。用真实语义化 HTML、文字和可复用组件实现设计，统一 tokens、组件变体与素材引用，不新增未经设计的渐变、玻璃效果、悬浮卡片或装饰动画。
 
-**duo-dev 自动联动准则（跨环境、统一模型）**：
-当任务属于代码实现阶段（Design Gate 已通过，进入 implementation）时，按当前运行环境解析模型与工程入口；不绑定某台电脑、模型厂商或固定模型名称。
-已处在 duo-dev 某个执行阶段时沿用当前任务与角色，不嵌套或重启编排器。
-- **先确定一个主模型**：用户明确指定的模型优先；未指定时读取当前宿主会话或 CLI/provider 的实际配置，采用已配置、可调用的主模型。模型列表只用于确认可用性，不按返回顺序随意选第一个，不猜测模型 ID，也不静默切换厂商或降低模型档次。无法确定外部编排所需的确切 ID 时，使用宿主当前模型完成原生工作流；只有必须由用户决定模型时才询问。
-- **三个角色使用同一模型**：Planner、Executor、Reviewer 全部绑定到同一个已解析的模型 ID，不保留按角色分配不同模型的默认值。Gemini 环境使用当前配置的 Gemini 主模型；Codex 或其他环境使用其实际配置的主模型。同一模型的不同角色是职责分工，不宣称为不同模型或独立专家。
-- **发现并检查编排器**：在目标仓库检查 Git 状态、当前可执行的 `duo-dev` 入口、其帮助/配置及后端能力；存在兼容入口且满足前置条件时执行 `duo-dev run "<task description>"`。未加入 PATH 的安装使用当前环境实际发现的入口，不复制开发者电脑上的绝对路径。调用前遵守该版本对干净工作树和审查后自动提交等要求，不擅自清理用户修改。
-- **Codex CLI 版的明确配置**：此版本通过 Codex CLI 的 `--model` 执行各角色。启动前，在该次运行的进程环境中将 `PLANNER_MODEL`、`EXECUTOR_MODEL`、`REVIEWER_MODEL` 三项全部设为同一个实际可路由的模型 ID，再启动编排器；不修改永久环境配置。`OPENAI_BASE_URL` 与 `OPENAI_API_KEY` 不指定模型，不保证当前会话模型会自动继承，也不证明 Gemini 原生接口与此后端兼容。
-- **Gemini 与其他宿主适配**：优先使用当前宿主可执行的、支持同一模型配置的兼容编排器。仅安装本 skill 不会安装 duo-dev 或把 Codex CLI 后端变成 Gemini 后端。没有兼容编排器、后端无法路由所选模型或缺少前置条件时，使用宿主当前模型依次完成规划 → 实现 → 审查 → 修复 → 复验；宿主支持真实子代理时也必须采用同一模型。报告原生执行方式及限制，不声称已运行 duo-dev；编排器启动或执行失败时记录原因，检查已有改动后从未完成步骤继续，不盲目重跑。
-- **自动推进与验证**：在已授权范围内自动完成各步骤，不为角色切换逐步询问；真实缺失决策和权限边界仍须遵守。工程模型与图片模型分别解析：统一工程模型不限制生图使用 Gemini 的 Nano Banana 或其他可用图片模型，生图继续遵守图片路由与能力核验规则。
+**原生工程流程**：
+当 Design Gate 已通过并进入实现阶段时，使用当前宿主的 GPT 模型与原生工具完成规划衔接 → 实现 → 审查 → 修复 → 复验。遵守已确认设计、项目约束与权限边界，保留用户修改，不启动外部工程编排器，不因其他模型不可用而阻塞工作。角色分工不代表独立模型或专家。图片生成继续遵守单独的图片路由规则。
 
 逐区把页面映射回设计稿、组件和素材。处理目标设备的布局、裁切、字体与交互，配置合理的图片尺寸、格式与响应式资源，不对关键首屏内容无差别懒加载。
 

@@ -11,8 +11,11 @@ from urllib.parse import unquote, urlsplit
 
 NAME = 'ultimate-frontend-designer'
 SKILL_PATH = Path('skills') / NAME
-REFERENCES = {'design-foundation.md', 'pages-and-assets.md',
-              'motion-and-video.md', 'prompts-and-state.md'}
+REFERENCES = {'content-evidence.md', 'design-foundation.md',
+              'industry-content.md', 'integration-contract.md',
+              'motion-and-video.md', 'pages-and-assets.md',
+              'professional-craft.md', 'professional-sources.md',
+              'prompts-and-state.md'}
 MANIFESTS = ('plugin.json', '.codex-plugin/plugin.json', '.claude-plugin/plugin.json')
 # Explicit additions are included even before the parent stages them.
 DECLARED = ('docs/design-skill-sources.md', 'tests/test_validate.py', 'tests/test_ui_craft_review.py',
@@ -164,6 +167,11 @@ def validate_package(root: Path) -> list[Diagnostic]:
     def add(path: Path | str, code: str, message: str) -> None:
         diagnostics.append(Diagnostic(str(path).replace('\\', '/'), code, message))
 
+    private_module = root / SKILL_PATH / 'extensions' / 'oil-pro'
+    if private_module.exists():
+        add(SKILL_PATH / 'extensions' / 'oil-pro', 'private-module',
+            'Private Oil Pro module is not part of the public package')
+
     try:
         files = distributable_files(root)
     except (OSError, ValueError, UnicodeError):
@@ -256,7 +264,7 @@ def validate_package(root: Path) -> list[Diagnostic]:
     except OSError:
         actual = set()
     if actual != REFERENCES or any(not (refs / n).is_file() for n in REFERENCES):
-        add(SKILL_PATH / 'references', 'references', 'Expected exactly four named chapters')
+        add(SKILL_PATH / 'references', 'references', 'Expected exactly nine named chapters')
     return sorted(diagnostics, key=lambda d: (d.path, d.code, d.message))
 
 
@@ -266,7 +274,7 @@ def main() -> int:
         print(f'FAIL [{d.code}] {d.path}: {d.message}')
     if diagnostics:
         return 1
-    print('PASS: metadata, four references, manifests, links and text hygiene')
+    print('PASS: metadata, nine references, manifests, links and text hygiene')
     print('Scope: static package integrity only; no generation, runtime, installation or publication test.')
     return 0
 

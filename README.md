@@ -10,7 +10,7 @@
 
 A community-built, image-first frontend design skill for **Codex and compatible ChatGPT workflows**. It combines design thinking, brand direction, UI/UX, asset planning and frontend delivery into one staged workflow.
 
-Version **4.4.0** adds the embedded UI Craft extension: interaction and recovery rules, ten workspace archetypes, three renovation modes, nineteen original offline component patterns, direction comparison tools and content-bound review records. Full-site production retains image-first design and both acceptance gates. “Ultimate” is the project name, not a benchmark claim or an OpenAI endorsement.
+Version **5.1.0** adds source-grounded content planning, five focused references covering evidence, industry content, method integration, design craft and professional sources, and an updated public UI Craft integration. Full-site production retains image-first design and both acceptance gates. “Ultimate” is the project name, not a benchmark claim or an OpenAI endorsement.
 
 The extension independently builds on public MIT Oil UI tools. It is not the proprietary Oil UI Pro and does not claim identical internals or equal outcomes. See [source and license details](skills/ultimate-frontend-designer/extensions/ui-craft/PROVENANCE.md) and the [offline component laboratory](skills/ultimate-frontend-designer/extensions/ui-craft/assets/component-lab.html). Runtime checks of the laboratory and routing probes do not establish production design quality across projects.
 
@@ -156,9 +156,14 @@ skills/ultimate-frontend-designer/
   SKILL.md                          Canonical workflow and rules
   agents/openai.yaml                Skill display metadata
   references/
+    content-evidence.md             Fact status and content evidence
     design-foundation.md            Design thinking and visual system
-    pages-and-assets.md             Content coverage, pages and assets
+    industry-content.md             Information patterns across industries
+    integration-contract.md         Public workflow and UI Craft boundaries
     motion-and-video.md             Keyframes, H3 and motion delivery
+    pages-and-assets.md             Content coverage, pages and assets
+    professional-craft.md           Practical visual design guidance
+    professional-sources.md         Standards, sources and their limits
     prompts-and-state.md            Prompt contracts and state schemas
 docs/chatgpt-project.md              ChatGPT fallback setup, EN/ZH
 examples/prompts.md                  Copyable prompts, EN/ZH
@@ -175,7 +180,7 @@ python -X utf8 -m unittest discover -s tests -p "test_*.py" -v
 python -O -X utf8 scripts/validate.py
 ```
 
-The stdlib validator checks strict UTF-8/no entrypoint BOM, bounded metadata, semantic versions, aligned manifests, four references, local Markdown targets and distributable text hygiene including Python/YAML/JSON. It scans tracked files plus declared new package files, excluding work/cache; unpacked copies use bounded package directories. Diagnostics do not echo credential values. Python is for this optional maintainer check, not for using the instructions. These checks do not simulate an agent, generate images or certify compatibility with every host.
+The stdlib validator checks strict UTF-8/no entrypoint BOM, bounded metadata, semantic versions, aligned manifests, nine references, local Markdown targets and distributable text hygiene including Python/YAML/JSON. It rejects private Oil Pro module paths, scans tracked files plus declared new package files, and excludes work/cache; unpacked copies use bounded package directories. Diagnostics do not echo credential values. Python is for this optional maintainer check, not for using the instructions. These checks do not simulate an agent, generate images or certify compatibility with every host.
 
 When reporting an issue, include the host, skill version, requested scope, expected/observed behavior and a redacted reproduction. Improvements should preserve the original workflow, avoid duplicated rules, keep the English/Chinese documentation aligned and add no silent spending or publishing permissions.
 

@@ -130,6 +130,12 @@ class PackageValidationTests(unittest.TestCase):
         (self.root / validator.SKILL_PATH / 'references/extra.md').write_text('extra', encoding='utf-8')
         self.assertIn('references', self.codes())
 
+    def test_private_oil_pro_module_is_rejected(self):
+        private = self.root / validator.SKILL_PATH / 'extensions/oil-pro/PROVENANCE.md'
+        private.parent.mkdir(parents=True)
+        private.write_text('private module marker', encoding='utf-8')
+        self.assertIn('private-module', self.codes())
+
     def test_unquoted_credential_assignment(self):
         p = self.root / 'skills/ultimate-frontend-designer/agents/openai.yaml'
         secret = 'synthetic-unquoted-value'
@@ -148,7 +154,7 @@ class PackageValidationTests(unittest.TestCase):
         self.assertIn('encoding', self.codes())
 
     def test_work_is_excluded(self):
-        p = self.root / 'work/private.md'
+        p = self.root / 'scripts/work/private.md'
         p.parent.mkdir()
         p.write_text('C:' + '/Users/' + 'private', encoding='utf-8')
         self.assertEqual(self.codes(), set())

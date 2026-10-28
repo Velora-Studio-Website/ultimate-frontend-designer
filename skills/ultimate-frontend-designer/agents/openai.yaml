@@ -1,4 +1,4 @@
 interface:
   display_name: "Ultimate Frontend Designer"
-  short_description: "Image-first sites, UI renovation, components and review."
-  default_prompt: "Use $ultimate-frontend-designer to choose the workflow for this UI task, preserve image-first gates for full sites, and verify actual results."
+  short_description: "Professional content, image-first UI, craft and verified builds."
+  default_prompt: "Use $ultimate-frontend-designer to select the scoped workflow, ground content in real sources, develop a distinctive concept, preserve image-first gates and verify actual results."

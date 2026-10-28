@@ -28,7 +28,7 @@
 project:
   current_phase: intake
   execution_status: ready        # ready / working / waiting_user / waiting_tool / blocked / completed
-  delivery_scope: pending        # design_only / full_build / local_fix
+  delivery_scope: pending        # design_only / full_build / local_fix / renovation / component_polish / ui_review
   research_permission: pending
   motion_mode: pending           # pending / animate / non_animate
   target_devices: pending        # pending / desktop / mobile / both
@@ -91,6 +91,10 @@ phase_results:
 旧状态兼容：读取既有决定和结果，不清空重建。旧 phase_results 字符串视作 status，证据缺失则记录未知。旧 user_override 要回查实际用户原话：仅“直接完成”归入 autonomous；确有范围变更写 scope_changes，不自动豁免必要检查。按实际受影响部分迁移，保持恢复位置。
 
 ## asset-manifest.json
+
+5.0 仅向后兼容扩充 delivery_scope：整体现有产品改造用 renovation，单组件精修用 component_polish，只读诊断用 ui_review；已有 design_only/full_build/local_fix 保留。gates.delivery 仍对应 Build Gate，不增加竞争键。只读评审不改产品；仅规划或修改 Skill 本身不启动生产状态。恢复时保留已选视频、旧字段和有效证据。
+
+事实与信息覆盖记录放在 brief 或项目既有内容文件；按 [内容与证据](content-evidence.md) 使用 user_supplied/verified/assumption/pending，不额外强制事实状态文件。来源可核实与主张已核实分开。
 
 每项素材记录：`id`、`purpose`、`page_section`、`type`、`source`、`provider`、`model`、`path_or_ref`、`size`、`aspect_ratio`、`device`、`crop_rule`、`alt`、`reference_inputs`、`design_version`、`fallback`。
 

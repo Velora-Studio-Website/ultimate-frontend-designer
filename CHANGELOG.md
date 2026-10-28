@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.1.0
+
+- Add source-grounded content planning and five public reference chapters for content evidence, industry information, integration boundaries, professional craft and source limits.
+- Refresh the published entrypoint and UI Craft guidance while preserving the existing image-first workflow and Design/Build gates.
+- Update all plugin manifests and bilingual setup guidance to version 5.1.0; expand offline validation to cover nine references and reject private Oil Pro module paths.
+- Retain the pinned public Oil UI files and their MIT notice; the private local Oil Pro module is not part of this public package.
+- Remove stale backup, bytecode and machine-specific sync files from the skill distribution.
+
 ## 4.4.0
 
 - Embed independently authored UI Craft methods for interaction states, recovery, ten workspace archetypes, three renovation modes, component refinement and evidence-led review.

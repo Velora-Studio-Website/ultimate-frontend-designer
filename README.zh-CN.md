@@ -10,7 +10,7 @@
 
 这是一个面向 **Codex 和兼容 ChatGPT 工作环境**的社区 Skill，将设计思维、品牌视觉、UI/UX、素材制作与前端交付放进同一套图片优先流程。
 
-当前版本 **4.4.0** 内置 UI Craft 增强模块：交互与恢复规则、十种工作区原型、三种改造模式、十九个原创离线组件模式、方向对比工具与绑定文件身份的评审记录。完整建站仍遵守图片优先和两道验收门。Ultimate 是项目名称，不代表基准测试结论或 OpenAI 官方背书。
+当前版本 **5.1.0** 增加有来源依据的内容规划、五份覆盖内容证据、行业信息、整合边界、设计方法与专业来源的参考，并更新公开版 UI Craft 集成。完整建站仍遵守图片优先和两道验收门。Ultimate 是项目名称，不代表基准测试结论或 OpenAI 官方背书。
 
 增强模块基于 MIT Oil UI 公开工具独立扩展，不是付费 Oil UI Pro，不声称内部规则或效果一比一。参见[来源与许可](skills/ultimate-frontend-designer/extensions/ui-craft/PROVENANCE.md)和[离线组件实验室](skills/ultimate-frontend-designer/extensions/ui-craft/assets/component-lab.html)。组件实测与路由评估不等于跨项目设计质量已经得到证明。
 
@@ -155,9 +155,14 @@ skills/ultimate-frontend-designer/
   SKILL.md                          核心规则与工作流
   agents/openai.yaml                展示信息
   references/
+    content-evidence.md             事实状态与内容证据
     design-foundation.md            设计思维与视觉系统
-    pages-and-assets.md             内容完整性、页面与素材
+    industry-content.md             跨行业信息组织
+    integration-contract.md         公开工作流与 UI Craft 边界
     motion-and-video.md             关键帧、H3 和动效交付
+    pages-and-assets.md             内容完整性、页面与素材
+    professional-craft.md           实用视觉设计方法
+    professional-sources.md         标准、来源与适用边界
     prompts-and-state.md            提示词与状态结构
 docs/chatgpt-project.md              ChatGPT 项目模式设置，中英文
 examples/prompts.md                  可复制提示词，中英文
@@ -174,7 +179,7 @@ python -X utf8 -m unittest discover -s tests -p "test_*.py" -v
 python -O -X utf8 scripts/validate.py
 ```
 
-stdlib 验证器检查严格 UTF-8、入口无 BOM、有界 metadata、语义版本、清单一致、四分册、本地链接和发布文本卫生（含 Python/YAML/JSON）。扫描跟踪文件及声明的新发布文件，排除 work/cache；解压副本使用有限发布目录。诊断不回显凭据值。使用 Skill 指令本身不需要 Python。该检查不模拟 Agent、不生成图片，也不证明所有客户端都兼容。
+stdlib 验证器检查严格 UTF-8、入口无 BOM、有界 metadata、语义版本、清单一致、九份参考、本地链接和发布文本卫生（含 Python/YAML/JSON）。它会拒绝 Oil Pro 私有模块路径，扫描跟踪文件及声明的新发布文件，并排除 work/cache；解压副本使用有限发布目录。诊断不回显凭据值。使用 Skill 指令本身不需要 Python。该检查不模拟 Agent、不生成图片，也不证明所有客户端都兼容。
 
 反馈问题时，请提供环境、Skill 版本、任务范围、预期／实际结果，以及去除敏感信息后的复现步骤。修改应保留原流程、避免重复规则、同步双语文档，并且不增加隐含的花费或发布权限。
 

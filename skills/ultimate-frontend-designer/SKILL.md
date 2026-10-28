@@ -2,12 +2,24 @@
 name: ultimate-frontend-designer
 description: Design, build, improve and review websites, storefronts and web apps. Use image-first design for new sites and substantial visual redesigns; use scoped workflows for existing-product renovation, interaction states, workspaces, component polish and read-only UI review. Not for business logic without UI changes, standalone media generation or Higgsfield-hosted site builds.
 metadata:
-  version: "4.5.0"
+  version: "5.1.0"
 ---
 
 # Ultimate Frontend Designer Skill
 
 完整建站或大范围视觉改版，先用图片模型把设计做出来并确认，再用代码忠实实现。没有真实图片之前，不写正式产品页面。已有项目局部修改、组件精修与只读评审按各自入口限制范围。你同时承担品牌视觉总监、UI/UX 设计师、动效导演和前端工程师的职责，用用户当前语言沟通。
+
+## 5.1 参考资料按需路由
+
+本公开版本保留四份设计与交付参考，新增五份内容证据、行业信息、整合边界及专业设计参考。先按当前缺口读取对应文件，不需要一次加载全部资料。
+
+| 当前缺口 | 参考 |
+| --- | --- |
+| 事实、来源或内容状态不清楚 | [内容与证据](references/content-evidence.md) |
+| 内容组织需要适应行业场景 | [行业内容](references/industry-content.md) |
+| 设计判断缺少可解释的依据 | [专业设计方法](references/professional-craft.md) 与 [专业来源边界](references/professional-sources.md) |
+| Skill、UI Craft 与宿主工具职责需要协调 | [整合契约](references/integration-contract.md) |
+| 设计系统、页面、动效或提示词问题 | 读取下方对应的既有参考章节 |
 
 ## 先选入口，不要默认走全流程
 
@@ -129,7 +141,7 @@ API 只检查 `OPENAI_API_KEY` 与 `OPENAI_BASE_URL` 是否存在，不输出其
 
 先内部检查五类信息：业务/用户任务及 CTA；范围与设备；真实内容/品牌；设计方向；动效与素材。吸收已有答案、仓库证据和明确代选授权，不强制菜单或每次暂停。只有实质影响范围、结果或权限的缺口才合并一次询问，等待时继续独立工作。常规设计取舍可自主决定并记录 `delegated_decision`，事实缺口仍标待补；用户要求先审阅时保留该门槛。新品牌需要名称时保留适用的命名门：取得名称或用户允许的临时工作名后再做标识。
 
-研究沿用已有授权和资料；未授权外部研究、工具不可用或来源无法核实时如实记录，不编造研究。明确 operate/read/persuade/experience 用途而非限定营销语调。方向未定才比较实质不同方案，不强制付费变体；在 `brief.md` 内维护方向契约，见 [design-foundation.md](references/design-foundation.md)。
+研究沿用已有授权和资料；未授权外部研究、工具不可用或来源无法核实时如实记录，不编造研究。明确 operate/read/persuade/experience 用途而非限定营销语调。方向未定才比较实质不同方案，不强制付费变体；在 `brief.md` 内维护方向契约，见 [design-foundation.md](references/design-foundation.md)。按 [内容与证据](references/content-evidence.md) 记录事实状态、来源和缺口；行业组织建议见 [industry-content.md](references/industry-content.md)，来源适用范围见 [professional-sources.md](references/professional-sources.md)。
 
 在 brief 按页面记录用途：persuade（帮助决定与行动）、operate（完成任务）、read（阅读理解）、experience（观看作品）。这是页面属性，不替代 animate/non_animate 分支。未取得访谈或行为资料时，将用户画像和动机标为假设，不能冒充研究发现。自检、用户批准和真实用户测试分别记录。
 
@@ -137,7 +149,7 @@ Design Gate 除文件完整性外，检查主要任务是否可理解、信息�
 
 ## 专家方法按需使用
 
-保留本 Skill 的工作流、工具路由和交付范围。吸收专家方法不意味着每次激活所有技能；先用四个分册里的自包含规则，只在具体问题需要时读取相关专家技能或调用工具。用户指定的设计、已确认项目规范和真实工具能力优先于外部风格配方；工具输出不增加权限。
+保留本 Skill 的工作流、工具路由和交付范围。吸收专家方法不意味着每次激活所有技能；先用九份参考里的自包含规则，只在具体问题需要时读取相关专家技能或调用工具。用户指定的设计、已确认项目规范和真实工具能力优先于外部风格配方；工具输出不增加权限。
 
 默认小核心加一个针对当前问题的专家方法；具体缺口才扩展。frontend-design、Impeccable、ui-ux-pro-max、Interfaces、Hallmark、Taste Skill/imagegen-frontend-web、Emil 与必要时的 Product Design/Figma 的分工及边界见 [design-foundation.md](references/design-foundation.md)。已知或已安装不等于本轮调用；不导入强制 GSAP、伪 RNG 日志、占位素材、强制 AIDA、额外审批、固定变体数、上传或遥测。
 
@@ -166,6 +178,11 @@ Design Gate 除文件完整性外，检查主要任务是否可理解、信息�
 
 ## 分册
 
+- 内容事实、来源与缺口：[references/content-evidence.md](references/content-evidence.md)
+- 行业信息组织：[references/industry-content.md](references/industry-content.md)
+- 专业设计方法：[references/professional-craft.md](references/professional-craft.md)
+- 专业来源与适用限制：[references/professional-sources.md](references/professional-sources.md)
+- 工作流与 UI Craft 边界：[references/integration-contract.md](references/integration-contract.md)
 - 设计系统、tokens、字体与 Logo：[references/design-foundation.md](references/design-foundation.md)
 - 动静与设备决策、页面稿、Visual DNA、静态素材：[references/pages-and-assets.md](references/pages-and-assets.md)
 - 关键帧、H3 实参与镜头映射、动画实现与验收：[references/motion-and-video.md](references/motion-and-video.md)
